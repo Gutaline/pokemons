@@ -10,13 +10,14 @@ let arrayForSelectItems = pokemonsList;
 
 
 const [myState, setMyState] = React.useState();
+const [filter, setFilter] = React.useState(['All'])
 
   return (
     <div className="container">
       <Header />
       <div className="wrapper">
-        <Categories className = "categories"  />
-        <SelectItems  pokemonsList = {arrayForSelectItems} deepState ={setMyState}  />
+        <Categories className = "categories" setFilter={setFilter} />
+        <SelectItems  pokemonsList = {arrayForSelectItems} deepState ={setMyState}   filter={filter}/>
         <View myState = {myState} pokiDescription = {arrayForSelectItems[myState-1]}/>
       </div>
     </div>
