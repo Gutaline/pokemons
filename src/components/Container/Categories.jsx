@@ -33,7 +33,7 @@ const Categories = ({myProps}) => {
         <li onClick = {()=> setVisibleClass(!visibleClass)}>Классы
           {visibleClass &&
             <ul>
-                <li>Gras</li>
+                <li>Grasss</li>
                 <li >Fire</li>
                 <li>Water</li>
                 <li>Bug</li>
