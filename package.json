@@ -1,6 +1,6 @@
 {
-  "name": "pokimons",
-  "homepage": "https://gutaline.github.io/newpoki",
+  "name": "pokemons",
+  "homepage": "https://gutaline.github.io/pokemons",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
