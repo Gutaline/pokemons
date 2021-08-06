@@ -15,7 +15,7 @@ const [myState, setMyState] = React.useState();
     <div className="container">
       <Header />
       <div className="wrapper">
-        <Categories className = "categories" myProps = {arrayForSelectItems} />
+        <Categories className = "categories"  />
         <SelectItems  pokemonsList = {arrayForSelectItems} deepState ={setMyState}  />
         <View myState = {myState} pokiDescription = {arrayForSelectItems[myState-1]}/>
       </div>

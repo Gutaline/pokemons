@@ -1,7 +1,7 @@
 import React from 'react';
 import heart from '../../assets/Heart1.png'
 
-const Categories = ({myProps}) => {
+const Categories = () => {
  
   const [visibleAbilites, setVisibleAbilites] = React.useState(false); // Эти стейты нужны ,Чтобы кнопки выдвигались
   const [visibleClass, setVisibleClass] = React.useState(false);// Эти стейты нужны ,Чтобы кнопки выдвигались
