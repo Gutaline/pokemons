@@ -23,7 +23,7 @@ const Categories = () => {
         <li onClick = {()=> setVisibleAbilites(!visibleAbilites)}>Cпособности
          {visibleAbilites &&
            <ul>
-              <li>Overgroth22</li>
+              <li>Overgroth222</li>
               <li>Fire</li>
            </ul> 
          }
