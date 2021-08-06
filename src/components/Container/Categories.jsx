@@ -7,11 +7,10 @@ const Categories = ({myProps}) => {
   const [visibleClass, setVisibleClass] = React.useState(false);// Эти стейты нужны ,Чтобы кнопки выдвигались
 
 
-  let ab = myProps;
 
   
   
-  const [test, setTest] = React.useState(); // Тут хранится отсортированный массив по классам
+
 
   
 
