@@ -1,9 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import heart from '../../assets/Heart1.png'
 
 const Categories = ({ setFilter }) => {
-  const [visibleAbilites, setVisibleAbilites] = React.useState(false) // Эти стейты нужны ,Чтобы кнопки выдвигались
-  const [visibleClass, setVisibleClass] = React.useState(false) // Эти стейты нужны ,Чтобы кнопки выдвигались
+  const [visibleAbilites, setVisibleAbilites] = useState(false) // Эти стейты нужны ,Чтобы кнопки выдвигались
+  const [visibleClass, setVisibleClass] = useState(false) // Эти стейты нужны ,Чтобы кнопки выдвигались
 
   return (
     <div className="categories">

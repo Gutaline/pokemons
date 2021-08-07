@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PokemonCart from './PokemonCart'
 
 const SelectItems = ({ pokemonsList, deepState, filter }) => {
-  const [q, setQ] = React.useState('') // это для поискового запроса
-  const [searchParam] = React.useState(['name']) // задача массива нужных нам данных в АПИ
+  const [q, setQ] = useState('') // это для поискового запроса
+  const [searchParam] = useState(['name']) // задача массива нужных нам данных в АПИ
 
   function search(pokemonsList) {
     // eslint-disable-next-line
@@ -27,8 +27,7 @@ const SelectItems = ({ pokemonsList, deepState, filter }) => {
           )
         })
       }
-    }
-    )
+    })
   }
 
   return (

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Header from './Header'
 import Categories from './Categories'
 import SelectItems from './SelectItems'
@@ -7,8 +7,8 @@ import View from './View'
 const Container = ({ pokemonsList }) => {
   let arrayForSelectItems = pokemonsList
 
-  const [myState, setMyState] = React.useState()
-  const [filter, setFilter] = React.useState('All')
+  const [myState, setMyState] = useState()
+  const [filter, setFilter] = useState('All')
 
   return (
     <div className="container">
