@@ -8,7 +8,7 @@ const Categories = ({ setFilter }) => {
   return (
     <div className="categories">
 
-      <div className = "categories-favorites__wrapper" onClick = { () => setFilter('favorite')}>
+      <div className = "categories-favorites__wrapper" onClick = { () => setFilter('favorites')}>
           <img className="categories-img" src={heart} alt="heart"  />
           <div className="categories-favorites">Избранное</div>
       </div>
@@ -53,6 +53,13 @@ const Categories = ({ setFilter }) => {
                 }}
               >
                 Bug
+              </li>
+              <li
+                onClick={() => {
+                  setFilter('All')
+                }}
+              >
+                All
               </li>
             </ul>
           )}
