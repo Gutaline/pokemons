@@ -15,7 +15,7 @@ const Categories = () => {
           Cпособности
           {visibleAbilites && (
             <ul>
-              <li>Евген322</li>
+              <li>Евген3222</li>
               <li>Fire</li>
             </ul>
           )}
