@@ -1,10 +1,11 @@
 import React from 'react'
 import PokemonCart from './PokemonCart'
 
-const SelectItems = ({ pokemonsList, deepState, filter }) => {
+const SelectItems = ({ pokemonsList, deepState, filter,favorites }) => {
   const [q, setQ] = React.useState('') // это для поискового запроса
   const [searchParam] = React.useState(['name']) // задача массива нужных нам данных в АПИ
 
+  
   function search(pokemonsList) {
     // eslint-disable-next-line
     return pokemonsList.filter((pokemonsList) => {
@@ -26,10 +27,31 @@ const SelectItems = ({ pokemonsList, deepState, filter }) => {
               .indexOf(q.toLowerCase()) > -1
           )
         })
-      }
-    }
+      }  else if (pokemonsList.favor === true) {
+        return searchParam.some((newItem) => {
+          return (
+            pokemonsList[newItem]
+              .toString()
+              .toLowerCase()
+              .indexOf(q.toLowerCase()) > -1
+          )
+        })
+      } 
+    
+    
+    
+
+
+
+
+
+
+
+    } 
+
     )
   }
+
 
   return (
     <div className="selectItems">

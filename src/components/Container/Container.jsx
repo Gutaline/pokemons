@@ -5,10 +5,12 @@ import SelectItems from './SelectItems'
 import View from './View'
 
 const Container = ({ pokemonsList }) => {
-  let arrayForSelectItems = pokemonsList
+ 
 
   const [myState, setMyState] = React.useState()
   const [filter, setFilter] = React.useState('All')
+
+  
 
   return (
     <div className="container">
@@ -16,13 +18,15 @@ const Container = ({ pokemonsList }) => {
       <div className="wrapper">
         <Categories className="categories" setFilter={setFilter} />
         <SelectItems
-          pokemonsList={arrayForSelectItems}
+          pokemonsList={pokemonsList}
           deepState={setMyState}
           filter={filter}
+         
         />
         <View
           myState={myState}
-          pokiDescription={arrayForSelectItems[myState - 1]}
+          pokiDescription={pokemonsList[myState - 1]}
+          
         />
       </div>
     </div>

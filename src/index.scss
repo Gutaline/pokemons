@@ -46,6 +46,14 @@ h1 {
     display: inline-block;
     transform: rotate(45deg);
   }
+
+  &-favorites {
+    &__wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 }
 
 .selectItems {
@@ -77,6 +85,14 @@ h1 {
 .view {
   width: 707px;
   &-description {
+    &__heart {
+      text-align: end;
+      & img {
+        width: 40px;
+        transform: rotate(90deg);
+        margin-right: 50px;
+      }
+    }
     &__image {
       text-align: center;
       & img {
