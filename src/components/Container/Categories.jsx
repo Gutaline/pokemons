@@ -7,6 +7,7 @@ const Categories = ({ setFilter }) => {
 
   return (
     <div className="categories">
+      <img className="categories-img" src={heart} alt="heart" />
       <div className="title">Категории</div>
       <ul className="categoriesList">
         <li onClick={() => setVisibleAbilites(!visibleAbilites)}>

@@ -6,8 +6,9 @@ const SelectItems = ({ pokemonsList, deepState, filter }) => {
   const [searchParam] = React.useState(['name']) // задача массива нужных нам данных в АПИ
 
   function search(pokemonsList) {
+    // eslint-disable-next-line
     return pokemonsList.filter((pokemonsList) => {
-      if (pokemonsList.types[0].type.name == filter) {
+      if (pokemonsList.types[0].type.name === filter) {
         return searchParam.some((newItem) => {
           return (
             pokemonsList[newItem]
@@ -16,7 +17,7 @@ const SelectItems = ({ pokemonsList, deepState, filter }) => {
               .indexOf(q.toLowerCase()) > -1
           )
         })
-      } else if (filter == 'All') {
+      } else if (filter === 'All') {
         return searchParam.some((newItem) => {
           return (
             pokemonsList[newItem]
@@ -26,7 +27,8 @@ const SelectItems = ({ pokemonsList, deepState, filter }) => {
           )
         })
       }
-    })
+    }
+    )
   }
 
   return (
