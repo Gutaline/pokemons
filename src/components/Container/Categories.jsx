@@ -1,34 +1,62 @@
 import React from 'react'
 import heart from '../../assets/Heart1.png'
 
-const Categories = () => {
+const Categories = ({ setFilter }) => {
   const [visibleAbilites, setVisibleAbilites] = React.useState(false) // Эти стейты нужны ,Чтобы кнопки выдвигались
   const [visibleClass, setVisibleClass] = React.useState(false) // Эти стейты нужны ,Чтобы кнопки выдвигались
 
   return (
     <div className="categories">
-      <img className="categories-img" src={heart} alt="heart" />
-      <h1>Избранное</h1>
       <div className="title">Категории</div>
       <ul className="categoriesList">
         <li onClick={() => setVisibleAbilites(!visibleAbilites)}>
-          Cпособности
+          Классы
           {visibleAbilites && (
             <ul>
-              <li>Евген3222</li>
-              <li>Fire</li>
+              <li
+                onClick={() => {
+                  setFilter('grass')
+                }}
+              >
+                Grass
+              </li>
+              <li
+                onClick={() => {
+                  setFilter('normal')
+                }}
+              >
+                Normal
+              </li>
+              <li
+                onClick={() => {
+                  setFilter('fire')
+                }}
+              >
+                Fire
+              </li>
+              <li
+                onClick={() => {
+                  setFilter('water')
+                }}
+              >
+                Water
+              </li>
+              <li
+                onClick={() => {
+                  setFilter('bug')
+                }}
+              >
+                Bug
+              </li>
             </ul>
           )}
         </li>
         <li onClick={() => setVisibleClass(!visibleClass)}>
-          Классы
+          Cпособности
           {visibleClass && (
             <ul>
-              <li>Grasss</li>
+              <li>Overgroth</li>
               <li>Fire</li>
-              <li>Water</li>
-              <li>Bug</li>
-              <li>Normal</li>
             </ul>
           )}
         </li>
