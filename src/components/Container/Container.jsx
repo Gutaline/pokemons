@@ -8,7 +8,7 @@ const Container = ({ pokemonsList }) => {
   let arrayForSelectItems = pokemonsList
 
   const [myState, setMyState] = React.useState()
-  const [filter, setFilter] = React.useState(['All'])
+  const [filter, setFilter] = React.useState('All')
 
   return (
     <div className="container">
