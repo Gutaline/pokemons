@@ -1,11 +1,11 @@
 import React from 'react'
 import PokemonDescription from './PokemonDescription'
 
-function View({myState,pokiDescription}) {
+function View({myState,pokiDescription,setFavorites}) {
   return (
-    <div  className = "view" onClick = {()=> console.log(myState)}>
+    <div  className = "view" >
      { myState &&
-        <PokemonDescription  pokiDescription = {pokiDescription} />
+        <PokemonDescription  pokiDescription = {pokiDescription} setFavorites = {setFavorites} />
      } 
     </div>
   )
