@@ -1,7 +1,7 @@
 import React from 'react'
 import heart from '../../assets/Heart1.png'
 
-function PokemonDescription({id,name,image,type,favorites,heartVisible}) {
+function PokemonDescription({id,name,image,type,favorites,heartVisible,showHeartDescr,setShowHeartDescr,allDescr}) {
 
  
 
@@ -17,7 +17,7 @@ function PokemonDescription({id,name,image,type,favorites,heartVisible}) {
              favorites((currentList)=> [...currentList , {id: id ,name: name, image: image, type:type}])
            }} 
           >
-             {heartVisible ?<div> </div> :<img className ="view-description__heart " src={heart} alt="heart"  />} 
+             {heartVisible ?<div> </div> :<img className ={showHeartDescr ? "view-description__heart" : "disable"} src={heart} alt="heart" onClick = {() => {setShowHeartDescr(false); allDescr.favor = true} }  />} 
              </div>
        
            </div>

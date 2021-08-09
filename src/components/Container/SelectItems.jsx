@@ -2,7 +2,7 @@ import React from 'react'
 import PokemonCart from './PokemonCart'
 import PokemonFavor from './PokemonFavor'
 
-const SelectItems = ({ pokemonsList, deepState, filter,favorites,favoritesVisible}) => {
+const SelectItems = ({ pokemonsList, deepState, filter,favorites,favoritesVisible,setShowHeartDescr}) => {
   const [q, setQ] = React.useState('') // это для поискового запроса
   const [searchParam] = React.useState(['name']) // задача массива нужных нам данных в АПИ
 
@@ -56,6 +56,7 @@ const SelectItems = ({ pokemonsList, deepState, filter,favorites,favoritesVisibl
               key={index}
               deepState={deepState}
               favor={pokemon.favor}
+              setShowHeartDescr = {setShowHeartDescr}
             />
           ))
         }
