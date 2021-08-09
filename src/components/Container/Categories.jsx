@@ -1,14 +1,14 @@
 import React from 'react'
 import heart from '../../assets/Heart1.png'
 
-const Categories = ({ setFilter }) => {
+const Categories = ({ setFilter ,setFavoritesVisible }) => {
   const [visibleAbilites, setVisibleAbilites] = React.useState(false) // Эти стейты нужны ,Чтобы кнопки выдвигались
   const [visibleClass, setVisibleClass] = React.useState(false) // Эти стейты нужны ,Чтобы кнопки выдвигались
 
   return (
     <div className="categories">
 
-      <div className = "categories-favorites__wrapper" onClick = { () => setFilter('favorites')}>
+      <div className = "categories-favorites__wrapper" onClick = { () => {setFavoritesVisible(currentValue => currentValue  = true)}}>
           <img className="categories-img" src={heart} alt="heart"  />
           <div className="categories-favorites">Избранное</div>
       </div>
@@ -22,6 +22,8 @@ const Categories = ({ setFilter }) => {
               <li
                 onClick={() => {
                   setFilter('grass')
+                  setFavoritesVisible(currentValue => currentValue  = false)
+                  
                 }}
               >
                 Grass
@@ -29,6 +31,7 @@ const Categories = ({ setFilter }) => {
               <li
                 onClick={() => {
                   setFilter('normal')
+                  setFavoritesVisible(currentValue => currentValue  = false)
                 }}
               >
                 Normal
@@ -36,6 +39,7 @@ const Categories = ({ setFilter }) => {
               <li
                 onClick={() => {
                   setFilter('fire')
+                  setFavoritesVisible(currentValue => currentValue  = false)
                 }}
               >
                 Fire
@@ -43,6 +47,7 @@ const Categories = ({ setFilter }) => {
               <li
                 onClick={() => {
                   setFilter('water')
+                  setFavoritesVisible(currentValue => currentValue  = false)
                 }}
               >
                 Water
@@ -50,17 +55,12 @@ const Categories = ({ setFilter }) => {
               <li
                 onClick={() => {
                   setFilter('bug')
+                  setFavoritesVisible(currentValue => currentValue  = false)
                 }}
               >
                 Bug
               </li>
-              <li
-                onClick={() => {
-                  setFilter('All')
-                }}
-              >
-                All
-              </li>
+            
             </ul>
           )}
         </li>

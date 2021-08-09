@@ -14,11 +14,9 @@ function App() {
     function createPokemonObject(results) {
       results.forEach(async pokemon => {
         const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`);
-
         const data = await res.json();
 
         setAllPokemons(currentList => [...currentList, data]);
-
         await allPokemons.sort((a, b) => a.id - b.id);
       });
     }
@@ -28,8 +26,29 @@ function App() {
 
   useEffect(() => {
     getAllPokemons();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  function checkFavorPoki() {
+    const a = JSON.parse(localStorage.getItem('poki'));
+    let b = [];
+
+    if (a) {
+      a.forEach((item, index) => {
+        b[index] = item.id;
+      });
+
+      allPokemons.forEach(item => {
+        if (b.includes(item.id)) {
+          item.favor = true;
+        }
+      });
+    }
+  }
+
+  checkFavorPoki();
+  console.log(allPokemons);
 
   return (
     <div className="App">

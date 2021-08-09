@@ -15,6 +15,10 @@ h1 {
   margin: 0;
 }
 
+.disable {
+  display: none;
+}
+
 .container {
   width: 1110px;
   margin: 100px auto 0 auto;
@@ -164,6 +168,17 @@ h1 {
     font-size: 20px;
     text-transform: capitalize;
     margin-bottom: 10px;
+  }
+
+  &__heart {
+    width: 150px;
+    text-align: end;
+    margin-top: -20px;
+    & img {
+      width: 25px;
+      height: 25px;
+      transform: rotate(90deg);
+    }
   }
 
   &::after {

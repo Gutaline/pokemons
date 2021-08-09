@@ -1,9 +1,12 @@
 import React from 'react'
 import PokemonCart from './PokemonCart'
+import PokemonFavor from './PokemonFavor'
 
-const SelectItems = ({ pokemonsList, deepState, filter}) => {
+const SelectItems = ({ pokemonsList, deepState, filter,favorites,favoritesVisible}) => {
   const [q, setQ] = React.useState('') // это для поискового запроса
   const [searchParam] = React.useState(['name']) // задача массива нужных нам данных в АПИ
+
+  
 
   
   function search(pokemonsList) {
@@ -27,22 +30,37 @@ const SelectItems = ({ pokemonsList, deepState, filter}) => {
               .indexOf(q.toLowerCase()) > -1
           )
         })
-      } 
-      
-    
-    
-    
+      }})}
 
+      function renderFavorOrItems() {
 
-
-
-
-
-
-    } 
-
-    )
-  }
+        if(favoritesVisible) {
+            if(favorites.length > 0) {
+            return favorites.map((pokemon,index) => (
+              <PokemonFavor
+                id={pokemon.id}
+                name={pokemon.name}
+                image = {pokemon.image}
+                type={pokemon.type}
+                key={index}
+              />
+            ))
+            } else { return <div> У вас тут пусто :(</div>}
+        } else {
+          return search(pokemonsList).map((pokemon, index) => (
+            <PokemonCart
+              id={pokemon.id}
+              name={pokemon.name}
+              image={pokemon.sprites.other.dream_world.front_default}
+              type={pokemon.types[0].type.name}
+              key={index}
+              deepState={deepState}
+              favor={pokemon.favor}
+            />
+          ))
+        }
+      }
+       
 
 
   return (
@@ -60,16 +78,10 @@ const SelectItems = ({ pokemonsList, deepState, filter}) => {
           />
         </label>
       </div>
-      {search(pokemonsList).map((pokemon, index) => (
-        <PokemonCart
-          id={pokemon.id}
-          name={pokemon.name}
-          image={pokemon.sprites.other.dream_world.front_default}
-          type={pokemon.types[0].type.name}
-          key={index}
-          deepState={deepState}
-        />
-      ))}
+      
+      {renderFavorOrItems()}
+      
+      
     </div>
   )
 }
