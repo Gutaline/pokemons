@@ -13,12 +13,21 @@ const Categories = ({ setFilter }) => {
           <div className="categories-favorites">Избранное</div>
       </div>
 
-      <div className="title">Категории</div>
+      <div className="title" onClick={()=> {
+        setFilter('All')
+      }}>Категории</div>
       <ul className="categoriesList">
         <li onClick={() => setVisibleAbilites(!visibleAbilites)}>
           Классы
           {visibleAbilites && (
             <ul>
+              <li
+                onClick={() => {
+                  setFilter('All')
+                }}
+              >
+                All
+              </li>
               <li
                 onClick={() => {
                   setFilter('grass')
