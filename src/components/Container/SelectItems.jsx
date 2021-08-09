@@ -1,14 +1,24 @@
 import React from 'react'
 import PokemonCart from './PokemonCart'
+import PokemonFavor from './PokemonFavor'
 
-const SelectItems = ({ pokemonsList, deepState, filter }) => {
+const SelectItems = ({
+  pokemonsList,
+  deepState,
+  filter,
+  favorites,
+  favoritesVisible,
+}) => {
   const [q, setQ] = React.useState('') // это для поискового запроса
   const [searchParam] = React.useState(['name']) // задача массива нужных нам данных в АПИ
 
   function search(pokemonsList) {
     // eslint-disable-next-line
     return pokemonsList.filter((pokemonsList) => {
-      if (pokemonsList.types[0].type.name === filter) {
+      if (
+        pokemonsList.types[0].type.name === filter ||
+        pokemonsList.abilities[0].ability.name === filter
+      ) {
         return searchParam.some((newItem) => {
           return (
             pokemonsList[newItem]
@@ -26,17 +36,38 @@ const SelectItems = ({ pokemonsList, deepState, filter }) => {
               .indexOf(q.toLowerCase()) > -1
           )
         })
-      } else if (pokemonsList.favor === true && filter === 'favorite') {
-        return searchParam.some((newItem) => {
-          return (
-            pokemonsList[newItem]
-              .toString()
-              .toLowerCase()
-              .indexOf(q.toLowerCase()) > -1
-          )
-        })
       }
     })
+  }
+
+  function renderFavorOrItems() {
+    if (favoritesVisible) {
+      if (favorites.length > 0) {
+        return favorites.map((pokemon, index) => (
+          <PokemonFavor
+            id={pokemon.id}
+            name={pokemon.name}
+            image={pokemon.image}
+            type={pokemon.type}
+            key={index}
+          />
+        ))
+      } else {
+        return <div> У вас тут пусто :(</div>
+      }
+    } else {
+      return search(pokemonsList).map((pokemon, index) => (
+        <PokemonCart
+          id={pokemon.id}
+          name={pokemon.name}
+          image={pokemon.sprites.other.dream_world.front_default}
+          type={pokemon.types[0].type.name}
+          key={index}
+          deepState={deepState}
+          favor={pokemon.favor}
+        />
+      ))
+    }
   }
 
   return (
@@ -54,16 +85,8 @@ const SelectItems = ({ pokemonsList, deepState, filter }) => {
           />
         </label>
       </div>
-      {search(pokemonsList).map((pokemon, index) => (
-        <PokemonCart
-          id={pokemon.id}
-          name={pokemon.name}
-          image={pokemon.sprites.other.dream_world.front_default}
-          type={pokemon.types[0].type.name}
-          key={index}
-          deepState={deepState}
-        />
-      ))}
+
+      {renderFavorOrItems()}
     </div>
   )
 }

@@ -1,7 +1,9 @@
 import React from 'react'
+import heart from '../../assets/Heart1.png'
 
+function PokemonCart({id,name,type,image,deepState,favor}) {
 
-function PokemonCart({id,name,type,image,deepState}) {
+  
     return (
         <button className="pokemon-cart" onClick = {() => {
             deepState(id)
@@ -10,8 +12,13 @@ function PokemonCart({id,name,type,image,deepState}) {
             <div ><img src={image} alt="pokemon" /></div>
             <div>
                 <strong className = "pokemon-cart__name"> {name}</strong>
-                <div>Class: {type}</div>
+                
             </div>
+            
+                 <div>Class: {type}</div>
+                 {favor && <div className = "pokemon-cart__heart "  ><img src={heart} alt="like" / ></div>}
+            
+                
         </button>
             
     );
