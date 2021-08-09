@@ -20,7 +20,11 @@ const Categories = ({ setFilter, setFavoritesVisible }) => {
       <div className="title">Категории</div>
 
       <ul className="categoriesList">
-        <li onClick={() => setFilter('All')}>Все покемоны</li>
+        <li onClick={() => {
+          setFilter('All')
+          setFavoritesVisible((currentValue) => (currentValue = false))
+        }
+          }>Все покемоны</li>
         <li onClick={() => setVisibleAbilites(!visibleAbilites)}>
           Классы
           {visibleAbilites && (

@@ -1,6 +1,6 @@
 import React from 'react'
 import PokemonCart from './PokemonCart'
-import PokemonFavor from './PokemonFavor'
+
 
 
 const SelectItems = ({ pokemonsList, deepState, filter,favorites,favoritesVisible,setShowHeartDescr}) => {
@@ -38,13 +38,16 @@ const SelectItems = ({ pokemonsList, deepState, filter,favorites,favoritesVisibl
         if(favoritesVisible) {
             if(favorites.length > 0) {
             return favorites.map((pokemon,index) => (
-              <PokemonFavor
-                id={pokemon.id}
-                name={pokemon.name}
-                image = {pokemon.image}
-                type={pokemon.type}
-                key={index}
-              />
+              <PokemonCart
+              id={pokemon.id}
+              name={pokemon.name}
+              image={pokemon.image}
+              type={pokemon.type}
+              key={index}
+              deepState={deepState}
+              favor={pokemon.favor}
+              setShowHeartDescr = {setShowHeartDescr}
+            />
             ))
             } else { return <div> У вас тут пусто :(</div>}
         } else {
