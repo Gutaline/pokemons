@@ -15,6 +15,9 @@ const Container = ({ pokemonsList }) => {
 
   const [favorites, setFavorites] = useLocalStorage("poki",[]);
 
+  const [showHeartDescr,setShowHeartDescr] = React.useState(true);
+
+
 
   return (
     <div className="container">
@@ -30,11 +33,14 @@ const Container = ({ pokemonsList }) => {
           filter={filter}
           favorites = {favorites}
           favoritesVisible = {favoritesVisible}
+          setShowHeartDescr = {setShowHeartDescr}
         />
         <View
           myState={myState}
           pokiDescription={pokemonsList[myState - 1]}
           favorites = {setFavorites}
+          showHeartDescr = {showHeartDescr}
+          setShowHeartDescr = {setShowHeartDescr}
         />
       </div>
     </div>

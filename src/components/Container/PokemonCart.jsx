@@ -1,12 +1,13 @@
 import React from 'react'
 import heart from '../../assets/Heart1.png'
 
-function PokemonCart({id,name,type,image,deepState,favor}) {
+function PokemonCart({id,name,type,image,deepState,favor,setShowHeartDescr}) {
 
   
     return (
         <button className="pokemon-cart" onClick = {() => {
-            deepState(id)
+            deepState(id);
+            setShowHeartDescr(true);
         }}>
            <div  ><span>№{id}</span></div>
             <div ><img src={image} alt="pokemon" /></div>

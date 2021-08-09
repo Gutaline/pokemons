@@ -34,6 +34,7 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  console.log(allPokemons);
   function checkFavorPoki() {
     const a = JSON.parse(localStorage.getItem('poki'))
     let b = []
