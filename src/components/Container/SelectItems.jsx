@@ -46,7 +46,7 @@ const SelectItems = ({ pokemonsList, deepState, filter,favorites,favoritesVisibl
               key={index}
               deepState={deepState}
               favor={pokemon.favor}
-              setShowHeartDescr = {setShowHeartDescr}
+              setShowHeartDescr  = {setShowHeartDescr}
             />
             ))
             } else { return <div> У вас тут пусто :(</div>}
@@ -60,7 +60,7 @@ const SelectItems = ({ pokemonsList, deepState, filter,favorites,favoritesVisibl
               key={index}
               deepState={deepState}
               favor={pokemon.favor}
-              setShowHeartDescr = {setShowHeartDescr}
+              setShowHeartDescr  = {setShowHeartDescr }
             />
           ))
         }

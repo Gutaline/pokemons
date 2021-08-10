@@ -6,8 +6,14 @@ function PokemonCart({id,name,type,image,deepState,favor,setShowHeartDescr}) {
   
     return (
         <button className="pokemon-cart" onClick = {() => {
+            
             deepState(id);
-            setShowHeartDescr(true);
+            if(favor) {
+                setShowHeartDescr(false);
+            } else {
+                setShowHeartDescr(true);
+            }
+          
         }}>
            <div  ><span>№{id}</span></div>
             <div ><img src={image} alt="pokemon" /></div>
@@ -18,8 +24,7 @@ function PokemonCart({id,name,type,image,deepState,favor,setShowHeartDescr}) {
             
                  <div>Class: {type}</div>
                  {favor && <div className = "pokemon-cart__heart "  ><img src={heart} alt="like" / ></div>}
-            
-                
+              
         </button>
             
     );

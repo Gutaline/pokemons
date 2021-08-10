@@ -15,10 +15,6 @@ h1 {
   margin: 0;
 }
 
-.disable {
-  display: none;
-}
-
 .container {
   width: 1110px;
   margin: 100px auto 0 auto;
@@ -91,6 +87,15 @@ h1 {
   &-description {
     &__heart {
       text-align: end;
+      &--active {
+        opacity: 1;
+      }
+      &--noactive {
+        opacity: 0.7;
+        &:hover {
+          opacity: 0.9;
+        }
+      }
       & img {
         width: 40px;
         transform: rotate(90deg);
