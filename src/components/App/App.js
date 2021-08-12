@@ -11,17 +11,27 @@ function App() {
 
     setLoadMore(data.next);
 
-    function createPokemonObject(results) {
+    async function createPokemonObject(results) {
       results.forEach(async pokemon => {
         const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`);
         const data = await res.json();
 
-        setAllPokemons(currentList => [...currentList, data]);
+        const resAbility = await fetch(
+          `https://pokeapi.co/api/v2/ability/${data.abilities[0].ability.name}`,
+        );
+        const dataAbility = await resAbility.json();
+        const dataAbilityDescr = dataAbility.effect_entries;
+
+        data.abildesr = dataAbilityDescr;
+
+        setAllPokemons(currenList => [...currenList, data]);
       });
     }
 
     createPokemonObject(data.results);
   };
+
+  console.log(allPokemons);
 
   let sortPoki = allPokemons;
   sortPoki.sort((a, b) => a.id - b.id);

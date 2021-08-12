@@ -2,7 +2,7 @@
 import React from 'react'
 import heart from '../../assets/Heart1.png'
 
-function PokemonDescription({id,name,image,type,favorites,showHeartDescr,setShowHeartDescr,allDescr}) {
+function PokemonDescription({id,name,image,type,ability,abilityDescr,favorites,showHeartDescr,setShowHeartDescr,allDescr,}) {
 
     
   
@@ -31,6 +31,8 @@ function PokemonDescription({id,name,image,type,favorites,showHeartDescr,setShow
         <div className = "view-description__name">{name}</div> 
         <div className = "view-description__image"><img src={image} alt="" /></div>
         <div className = "view-description__type">Class:{type}</div>
+        <div className = "view-description__ability">Ability: <span>{ability}</span></div>
+        <div className = "view-description__abilityDescr"> {abilityDescr}</div>
         <div className = "view-description__heart" >
             
           <div onClick = {() => addOrDeleteFavor(showHeartDescr) }>

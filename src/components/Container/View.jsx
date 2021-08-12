@@ -10,6 +10,8 @@ function View({myState,pokiDescription,favorites,showHeartDescr,setShowHeartDesc
         <PokemonDescription  
         favorites = {favorites}  
         allDescr = {pokiDescription}
+        ability = {pokiDescription.abilities[0].ability.name}
+        abilityDescr = {pokiDescription.abildesr[1].effect}
         id = {pokiDescription.id}
         name = {pokiDescription.name}
         image = {pokiDescription.sprites.other.dream_world.front_default}

@@ -2,7 +2,8 @@ import React from 'react'
 import logo from '../../assets/logo.png'
 import ball from '../../assets/ball-1.png'
 
-const Header = () => {
+const Header = ({burger,setBurger}) => {
+
   return (
     <div className="header">
       <div className="header-logo_ball">
@@ -11,6 +12,12 @@ const Header = () => {
       <div className="header-logo__pokeman">
         <img src={logo} alt="pokemon" />
       </div>
+      
+        <div className = "burger-menu" onClick = {() =>{setBurger(!burger)}}>
+          <span></span>
+        </div>
+      
+      
     </div>
   )
 }
