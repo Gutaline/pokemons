@@ -15,9 +15,14 @@ h1 {
   margin: 0;
 }
 
+.App {
+  height: 100%;
+}
+
 .container {
-  width: 1110px;
-  margin: 100px auto 0 auto;
+  width: 90%;
+  height: auto;
+  margin: 1vh auto 1vh auto;
   border: 1px solid black;
   background-color: #f9e641;
 }
@@ -60,7 +65,7 @@ h1 {
   width: 200px;
   box-sizing: border-box;
   overflow: scroll;
-  height: 700px;
+  height: 80vh;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
