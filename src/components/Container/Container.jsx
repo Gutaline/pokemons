@@ -16,16 +16,18 @@ const Container = ({ pokemonsList }) => {
   const [favorites, setFavorites] = useLocalStorage("poki",[]);
 
   const [showHeartDescr,setShowHeartDescr] = React.useState(true);
+  const [burger,setBurger] = React.useState(false);
 
 
 
   return (
     <div className="container">
-      <Header />
+      <Header  burger = {burger} setBurger = {setBurger}/>
       <div className="wrapper">
         <Categories className="categories"
           setFilter={setFilter}
           setFavoritesVisible = {setFavoritesVisible}
+          burger = {burger} 
         />
         <SelectItems
           pokemonsList={pokemonsList}

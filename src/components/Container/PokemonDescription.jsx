@@ -6,11 +6,12 @@ function PokemonDescription({
   name,
   image,
   type,
+  ability,
+  abilityDescr,
   favorites,
   showHeartDescr,
   setShowHeartDescr,
   allDescr,
-  effect,
 }) {
   function addOrDeleteFavor(params) {
     if (params) {
@@ -41,6 +42,10 @@ function PokemonDescription({
           <img src={image} alt="" />
         </div>
         <div className="view-description__type">Class:{type}</div>
+        <div className="view-description__ability">
+          Ability: <span>{ability}</span>
+        </div>
+        <div className="view-description__abilityDescr"> {abilityDescr}</div>
         <div className="view-description__heart">
           <div onClick={() => addOrDeleteFavor(showHeartDescr)}>
             {

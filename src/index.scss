@@ -20,11 +20,46 @@ h1 {
 }
 
 .container {
-  width: 90%;
-  height: auto;
-  margin: 1vh auto 1vh auto;
+  max-width: 1110px;
+  margin: 0px auto 0 auto;
   border: 1px solid black;
   background-color: #f9e641;
+}
+
+.burger-menu {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 5%;
+  top: 41%;
+  display: none;
+}
+
+.burger-menu span {
+  width: 30px;
+  height: 2px;
+  display: block;
+  background-color: red;
+
+  &::before {
+    content: '';
+    height: 2px;
+    width: 30px;
+    background-color: red;
+    height: 2px;
+    position: absolute;
+    top: 40%;
+  }
+
+  &::after {
+    content: '';
+    height: 2px;
+    width: 30px;
+    background-color: red;
+    height: 2px;
+    position: absolute;
+    top: 80%;
+  }
 }
 
 .header {
@@ -32,13 +67,14 @@ h1 {
   padding: 10px 5px;
   border-bottom: 1px solid black;
   background-color: rgba(24, 31, 36, 1);
+  position: relative;
 }
 
 .categories {
-  width: 200px;
   border-right: 1px solid grey;
   box-sizing: border-box;
   padding: 10px 10px;
+  min-width: 200px;
   background-color: rgba(0, 0, 0, 0.73);
   color: #ffe600;
   & h1 {
@@ -62,14 +98,16 @@ h1 {
 }
 
 .selectItems {
-  width: 200px;
   box-sizing: border-box;
   overflow: scroll;
-  height: 80vh;
+
+  height: 700px;
+  min-width: 180px;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 86.5vh;
 
   &__search {
     width: 100%;
@@ -83,15 +121,15 @@ h1 {
 }
 
 .wrapper {
-  height: 100%;
   display: flex;
+  overflow-y: hidden;
 }
 
 .view {
-  width: 707px;
   &-description {
     &__heart {
       text-align: end;
+      margin-top: 20px;
       &--active {
         opacity: 1;
       }
@@ -122,6 +160,18 @@ h1 {
     }
     &__type {
       text-align: center;
+    }
+
+    &__ability {
+      font-size: 22px;
+      text-transform: capitalize;
+      margin-left: 15px;
+      display: inline-block;
+      border-bottom: 5px solid #404fd4;
+    }
+    &__abilityDescr {
+      margin-left: 15px;
+      margin-top: 16px;
     }
   }
 }
@@ -219,3 +269,5 @@ h1 {
   border-radius: 8px;
   border: 0px solid transparent;
 }
+
+@import './media';
