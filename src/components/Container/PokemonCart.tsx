@@ -1,10 +1,18 @@
 import React from 'react'
 import heart from '../../assets/Heart1.png'
 
-function PokemonCart({id,name,type,image,deepState,favor,setShowHeartDescr}) {
+export const PokemonCart: React.FC<{
+    id: number
+    name: string
+    type: string
+    image: string
+    deepState:(param: number) => void
+    favor: boolean
+    setShowHeartDescr: (param: boolean) => void 
+
+}> = ({id,name,type,image,deepState,favor,setShowHeartDescr}) => (
 
   
-    return (
         <button className="pokemon-cart" onClick = {() => {
             
             deepState(id);
@@ -27,7 +35,7 @@ function PokemonCart({id,name,type,image,deepState,favor,setShowHeartDescr}) {
               
         </button>
             
-    );
-}
+    
+)
 
 export default PokemonCart

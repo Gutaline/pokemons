@@ -1,7 +1,16 @@
 import React from 'react'
 import PokemonDescription from './PokemonDescription'
 
-function View({myState,pokiDescription,favorites,showHeartDescr,setShowHeartDescr}) {
+import {IPoki} from "../../interface";
+
+export const View: React.FC<{
+  myState:any
+  pokiDescription:IPoki
+  favorites: ()=> void
+  showHeartDescr:boolean
+  setShowHeartDescr: (param:boolean) => void
+
+}> =({myState,pokiDescription,favorites,showHeartDescr,setShowHeartDescr}) => {
 
  
   return (
@@ -16,7 +25,6 @@ function View({myState,pokiDescription,favorites,showHeartDescr,setShowHeartDesc
         name = {pokiDescription.name}
         image = {pokiDescription.sprites.other.dream_world.front_default}
         type = {pokiDescription.types[0].type.name}
-        heartVisible = {pokiDescription.favor}
         showHeartDescr = {showHeartDescr}
         setShowHeartDescr = {setShowHeartDescr}
         />

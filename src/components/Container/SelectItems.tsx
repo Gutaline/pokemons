@@ -1,15 +1,22 @@
 import React from 'react'
 import PokemonCart from './PokemonCart'
 
+import {IPoki} from "../../interface";
 
-
-const SelectItems = ({ pokemonsList, deepState, filter,favorites,favoritesVisible,setShowHeartDescr}) => {
+export const SelectItems:React.FC<{
+  pokemonsList:IPoki[]
+  deepState: (param: number) => void
+  filter:string
+  favorites: any[]
+  favoritesVisible: boolean
+  setShowHeartDescr: (param:boolean) => void
+}>  = ({ pokemonsList, deepState, filter,favorites,favoritesVisible,setShowHeartDescr}) => {
   const [q, setQ] = React.useState('') // это для поискового запроса
   const [searchParam] = React.useState(['name']) // задача массива нужных нам данных в АПИ
 
-  function search(pokemonsList) {
+  function search(pokemonsList:IPoki[]) {
     // eslint-disable-next-line
-    return pokemonsList.filter((pokemonsList) => {
+    return pokemonsList.filter((pokemonsList:any) => {
       if (
         pokemonsList.types[0].type.name === filter ||
         pokemonsList.abilities[0].ability.name === filter
@@ -37,7 +44,7 @@ const SelectItems = ({ pokemonsList, deepState, filter,favorites,favoritesVisibl
 
         if(favoritesVisible) {
             if(favorites.length > 0) {
-            return favorites.map((pokemon,index) => (
+            return favorites.map((pokemon:any,index:number) => (
               <PokemonCart
               id={pokemon.id}
               name={pokemon.name}
@@ -51,7 +58,7 @@ const SelectItems = ({ pokemonsList, deepState, filter,favorites,favoritesVisibl
             ))
             } else { return <div> У вас тут пусто :(</div>}
         } else {
-          return search(pokemonsList).map((pokemon, index) => (
+          return search(pokemonsList).map((pokemon:IPoki,index:number) => (
             <PokemonCart
               id={pokemon.id}
               name={pokemon.name}

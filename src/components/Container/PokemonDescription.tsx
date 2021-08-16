@@ -2,18 +2,31 @@
 import React from 'react'
 import heart from '../../assets/Heart1.png'
 
-function PokemonDescription({id,name,image,type,ability,abilityDescr,favorites,showHeartDescr,setShowHeartDescr,allDescr,}) {
+export const PokemonDescription:React.FC<{
+  id: number
+  name: string
+  image:string
+  type: string
+  ability: string
+  abilityDescr:string
+  favorites: (param:any) => void 
+  showHeartDescr: boolean
+  setShowHeartDescr: (param:boolean) => void
+  allDescr: any
+
+
+}> = ({id,name,image,type,ability,abilityDescr,favorites,showHeartDescr,setShowHeartDescr,allDescr,}) =>{
 
     
   
-  function addOrDeleteFavor(params) {
+  function addOrDeleteFavor(params:boolean) {
     if(params) {
-      favorites((currentList)=> [...currentList , {id: id ,name: name, image: image, type:type , favor: true}]);
+      favorites((currentList:[{}])=> [...currentList , {id: id ,name: name, image: image, type:type , favor: true}]);
       setShowHeartDescr(!params)
     } else {
-      const todos = JSON.parse(localStorage.getItem('poki'));
+      const todos = JSON.parse(localStorage.getItem('poki')!);
       
-      todos.forEach((item,index) => {
+      todos.forEach((item:any,index:number) => {
         if(item.id === id )  {
           todos.splice(index,1);
         }
