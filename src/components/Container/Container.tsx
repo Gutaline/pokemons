@@ -5,18 +5,27 @@ import SelectItems from './SelectItems'
 import View from './View'
 import useLocalStorage from "./useLocalStorage"
 
-const Container = ({ pokemonsList }) => {
+import {IPoki} from "../../interface";
 
 
-  const [myState, setMyState] = useState()
+export const Container:React.FC<{
+  pokemonsList: IPoki[]
+}> = ({ pokemonsList }) => {
+
+ 
+
+  const [myState, setMyState] = useState<any>()
   const [filter, setFilter] = useState('All')
 
-  const [favoritesVisible,setFavoritesVisible] = React.useState(false);
+  const [favoritesVisible,setFavoritesVisible] = useState(false);
 
   const [favorites, setFavorites] = useLocalStorage("poki",[]);
 
-  const [showHeartDescr,setShowHeartDescr] = React.useState(true);
-  const [burger,setBurger] = React.useState(false);
+  const [showHeartDescr,setShowHeartDescr] = useState(true);
+  const [burger,setBurger] = useState(false);
+
+
+
 
 
 
@@ -24,10 +33,11 @@ const Container = ({ pokemonsList }) => {
     <div className="container">
       <Header  burger = {burger} setBurger = {setBurger}/>
       <div className="wrapper">
-        <Categories className="categories"
+        <Categories 
           setFilter={setFilter}
           setFavoritesVisible = {setFavoritesVisible}
           burger = {burger} 
+        
         />
         <SelectItems
           pokemonsList={pokemonsList}
@@ -44,6 +54,7 @@ const Container = ({ pokemonsList }) => {
           showHeartDescr = {showHeartDescr}
           setShowHeartDescr = {setShowHeartDescr}
         />
+      
       </div>
     </div>
   )

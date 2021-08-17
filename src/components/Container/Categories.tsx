@@ -1,16 +1,23 @@
 import React from 'react'
 import heart from '../../assets/Heart1.png'
 
-const Categories = ({ setFilter, setFavoritesVisible ,burger}) => {
+export const Categories:React.FC<{
+
+  setFilter: (param:string) => void
+  setFavoritesVisible: (p:boolean) => void
+  burger: boolean
+
+}> = ({ setFilter, setFavoritesVisible ,burger}) => {
   const [visibleAbilites, setVisibleAbilites] = React.useState(false) // Эти стейты нужны ,Чтобы кнопки выдвигались
   const [visibleClass, setVisibleClass] = React.useState(false) // Эти стейты нужны ,Чтобы кнопки выдвигались
 
   return (
-    <div className={burger ? "categories active" : "categories"}>
+
+     <div className={burger ? "categories active" : "categories"}>
       <div
         className="categories-favorites__wrapper"
         onClick={() => {
-          setFavoritesVisible((currentValue) => (currentValue = true))
+          setFavoritesVisible(true)
         }}
       >
         <img className="categories-img" src={heart} alt="heart" />
@@ -22,7 +29,7 @@ const Categories = ({ setFilter, setFavoritesVisible ,burger}) => {
       <ul className="categoriesList">
         <li onClick={() => {
           setFilter('All')
-          setFavoritesVisible((currentValue) => (currentValue = false))
+          setFavoritesVisible( false)
         }
           }>Все покемоны</li>
         <li onClick={() => setVisibleAbilites(!visibleAbilites)}>
@@ -32,7 +39,7 @@ const Categories = ({ setFilter, setFavoritesVisible ,burger}) => {
               <li
                 onClick={() => {
                   setFilter('grass')
-                  setFavoritesVisible((currentValue) => (currentValue = false))
+                  setFavoritesVisible( false)
                 }}
               >
                 Grass
@@ -40,7 +47,7 @@ const Categories = ({ setFilter, setFavoritesVisible ,burger}) => {
               <li
                 onClick={() => {
                   setFilter('normal')
-                  setFavoritesVisible((currentValue) => (currentValue = false))
+                  setFavoritesVisible(false)
                 }}
               >
                 Normal
@@ -48,7 +55,7 @@ const Categories = ({ setFilter, setFavoritesVisible ,burger}) => {
               <li
                 onClick={() => {
                   setFilter('fire')
-                  setFavoritesVisible((currentValue) => (currentValue = false))
+                  setFavoritesVisible(false)
                 }}
               >
                 Fire
@@ -56,7 +63,7 @@ const Categories = ({ setFilter, setFavoritesVisible ,burger}) => {
               <li
                 onClick={() => {
                   setFilter('water')
-                  setFavoritesVisible((currentValue) => (currentValue = false))
+                  setFavoritesVisible(false)
                 }}
               >
                 Water
@@ -64,7 +71,7 @@ const Categories = ({ setFilter, setFavoritesVisible ,burger}) => {
               <li
                 onClick={() => {
                   setFilter('bug')
-                  setFavoritesVisible((currentValue) => (currentValue = false))
+                  setFavoritesVisible( false)
                 }}
               >
                 Bug
@@ -79,7 +86,7 @@ const Categories = ({ setFilter, setFavoritesVisible ,burger}) => {
               <li
                 onClick={() => {
                   setFilter('overgrow')
-                  setFavoritesVisible((currentValue) => (currentValue = false))
+                  setFavoritesVisible(false)
                 }}
               >
                 Overgroth
@@ -87,7 +94,7 @@ const Categories = ({ setFilter, setFavoritesVisible ,burger}) => {
               <li
                 onClick={() => {
                   setFilter('blaze')
-                  setFavoritesVisible((currentValue) => (currentValue = false))
+                  setFavoritesVisible( false)
                 }}
               >
                 Blaze
@@ -95,7 +102,7 @@ const Categories = ({ setFilter, setFavoritesVisible ,burger}) => {
               <li
                 onClick={() => {
                   setFilter('shield-dust')
-                  setFavoritesVisible((currentValue) => (currentValue = false))
+                  setFavoritesVisible(false)
                 }}
               >
                 Shield-dust
@@ -103,7 +110,7 @@ const Categories = ({ setFilter, setFavoritesVisible ,burger}) => {
               <li
                 onClick={() => {
                   setFilter('shed-skin')
-                  setFavoritesVisible((currentValue) => (currentValue = false))
+                  setFavoritesVisible( false)
                 }}
               >
                 Shed-skin
@@ -111,7 +118,7 @@ const Categories = ({ setFilter, setFavoritesVisible ,burger}) => {
               <li
                 onClick={() => {
                   setFilter('compound-eyes')
-                  setFavoritesVisible((currentValue) => (currentValue = false))
+                  setFavoritesVisible(false)
                 }}
               >
                 Compound-eyes
@@ -119,7 +126,7 @@ const Categories = ({ setFilter, setFavoritesVisible ,burger}) => {
               <li
                 onClick={() => {
                   setFilter('swarm')
-                  setFavoritesVisible((currentValue) => (currentValue = false))
+                  setFavoritesVisible(false)
                 }}
               >
                 Swarm
@@ -127,7 +134,7 @@ const Categories = ({ setFilter, setFavoritesVisible ,burger}) => {
               <li
                 onClick={() => {
                   setFilter('keen-eye')
-                  setFavoritesVisible((currentValue) => (currentValue = false))
+                  setFavoritesVisible(false)
                 }}
               >
                 Keen-eye
@@ -135,7 +142,7 @@ const Categories = ({ setFilter, setFavoritesVisible ,burger}) => {
               <li
                 onClick={() => {
                   setFilter('run-away')
-                  setFavoritesVisible((currentValue) => (currentValue = false))
+                  setFavoritesVisible(false)
                 }}
               >
                 Run-away
@@ -143,7 +150,7 @@ const Categories = ({ setFilter, setFavoritesVisible ,burger}) => {
               <li
                 onClick={() => {
                   setFilter('torrent')
-                  setFavoritesVisible((currentValue) => (currentValue = false))
+                  setFavoritesVisible( false)
                 }}
               >
                 Torrent
