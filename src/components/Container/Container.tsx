@@ -6,7 +6,7 @@ import View from './View'
 import useLocalStorage from "./useLocalStorage"
 
 import {IPoki} from "../../interface";
-import allPoki from "../../store/allPoki"
+
 
 
 export const Container:React.FC<{

@@ -3,7 +3,6 @@ import Container from '../Container/Container'
 
 import {IPoki} from "../../interface";
 
-import allPoki from "../../store/allPoki"
 
 
 
