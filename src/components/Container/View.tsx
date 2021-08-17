@@ -9,8 +9,10 @@ export const View: React.FC<{
   favorites: ()=> void
   showHeartDescr:boolean
   setShowHeartDescr: (param:boolean) => void
+  mobile: boolean
+  setMobile: (param:boolean) => void
 
-}> =({myState,pokiDescription,favorites,showHeartDescr,setShowHeartDescr}) => {
+}> =({myState,pokiDescription,favorites,showHeartDescr,setShowHeartDescr,mobile,setMobile}) => {
 
  
   return (
@@ -27,10 +29,13 @@ export const View: React.FC<{
         type = {pokiDescription.types[0].type.name}
         showHeartDescr = {showHeartDescr}
         setShowHeartDescr = {setShowHeartDescr}
+        mobile = {mobile}
+        setMobile = {setMobile}
         />
      } 
     </div>
   )
+
 }
 
 export default View

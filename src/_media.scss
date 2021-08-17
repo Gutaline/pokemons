@@ -18,6 +18,21 @@
   .burger-menu {
     display: block;
   }
+  .view-description {
+    display: none;
+  }
+  .view-description__mobile {
+    height: 86.5vh;
+  }
+  .selectItems.mobile {
+    display: none;
+  }
+  .wrapper {
+    display: block;
+  }
+  .view-description__back {
+    display: block;
+  }
 }
 
 @media (max-width: 616px) {

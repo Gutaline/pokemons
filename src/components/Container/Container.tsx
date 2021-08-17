@@ -6,6 +6,7 @@ import View from './View'
 import useLocalStorage from "./useLocalStorage"
 
 import {IPoki} from "../../interface";
+import allPoki from "../../store/allPoki"
 
 
 export const Container:React.FC<{
@@ -16,6 +17,8 @@ export const Container:React.FC<{
 
   const [myState, setMyState] = useState<any>()
   const [filter, setFilter] = useState('All')
+
+  const [mobile,setMobile] = useState(false)
 
   const [favoritesVisible,setFavoritesVisible] = useState(false);
 
@@ -46,6 +49,8 @@ export const Container:React.FC<{
           favorites = {favorites}
           favoritesVisible = {favoritesVisible}
           setShowHeartDescr = {setShowHeartDescr}
+          setMobile = {setMobile}
+          mobile = {mobile}
         />
         <View
           myState={myState}
@@ -53,7 +58,13 @@ export const Container:React.FC<{
           favorites = {setFavorites}
           showHeartDescr = {showHeartDescr}
           setShowHeartDescr = {setShowHeartDescr}
+          mobile = {mobile}
+          setMobile = {setMobile}
         />
+
+         
+
+        
       
       </div>
     </div>

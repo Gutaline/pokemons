@@ -9,13 +9,15 @@ export const PokemonCart: React.FC<{
     deepState:(param: number) => void
     favor: boolean
     setShowHeartDescr: (param: boolean) => void 
-
-}> = ({id,name,type,image,deepState,favor,setShowHeartDescr}) => (
+    setMobile: (param:boolean)=> void
+   
+}> = ({id,name,type,image,deepState,favor,setShowHeartDescr,setMobile}) => (
 
   
-        <button className="pokemon-cart" onClick = {() => {
+        <button className= "pokemon-cart" onClick = {() => {
             
             deepState(id);
+            setMobile(true);
             if(favor) {
                 setShowHeartDescr(false);
             } else {
@@ -23,15 +25,15 @@ export const PokemonCart: React.FC<{
             }
           
         }}>
-           <div  ><span>№{id}</span></div>
-            <div ><img src={image} alt="pokemon" /></div>
+           <div><span>№{id}</span></div>
+           <div ><img src={image} alt="pokemon" /></div>
             <div>
                 <strong className = "pokemon-cart__name"> {name}</strong>
                 
             </div>
             
-                 <div>Class: {type}</div>
-                 {favor && <div className = "pokemon-cart__heart "  ><img src={heart} alt="like" / ></div>}
+           <div>Class: {type}</div>
+               {favor && <div className = "pokemon-cart__heart "  ><img src={heart} alt="like" / ></div>}
               
         </button>
             

@@ -18,3 +18,13 @@ export interface IPoki {
     favor:boolean
 
 }
+
+export interface IPokiFavor {
+    id: number,
+    name: string,
+    image:string,
+    type:string,
+    favor:boolean
+
+}
+

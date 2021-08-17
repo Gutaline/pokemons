@@ -3,6 +3,8 @@ import Container from '../Container/Container'
 
 import {IPoki} from "../../interface";
 
+import allPoki from "../../store/allPoki"
+
 
 
 export const App:React.FC = () => {
@@ -32,8 +34,9 @@ export const App:React.FC = () => {
         setAllPokemons(currenList => [...currenList, data]);
       });
     }
-
+    
     createPokemonObject(data.results);
+    
   };
 
  
@@ -61,12 +64,14 @@ export const App:React.FC = () => {
       });
     }
   }
-
+ 
   checkFavorPoki();
+ 
 
   return (
     <div className="App">
       <Container pokemonsList={allPokemons} />
+      
     </div>
   );
 }
