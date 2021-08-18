@@ -1,16 +1,19 @@
 import React from 'react'
 import PokemonCart from './PokemonCart'
 
-import {IPoki} from "../../interface";
+import {IPoki,IPokiFavor} from "../../interface";
+
 
 export const SelectItems:React.FC<{
   pokemonsList:IPoki[]
   deepState: (param: number) => void
   filter:string
-  favorites: any[]
+  favorites: IPokiFavor[]
   favoritesVisible: boolean
   setShowHeartDescr: (param:boolean) => void
-}>  = ({ pokemonsList, deepState, filter,favorites,favoritesVisible,setShowHeartDescr}) => {
+  setMobile: (param:boolean)=> void
+  mobile:boolean
+}>  = ({ pokemonsList, deepState, filter,favorites,favoritesVisible,setShowHeartDescr,setMobile,mobile}) => {
   const [q, setQ] = React.useState('') // это для поискового запроса
   const [searchParam] = React.useState(['name']) // задача массива нужных нам данных в АПИ
 
@@ -44,7 +47,7 @@ export const SelectItems:React.FC<{
 
         if(favoritesVisible) {
             if(favorites.length > 0) {
-            return favorites.map((pokemon:any,index:number) => (
+            return favorites.map((pokemon:IPokiFavor,index:number) => (
               <PokemonCart
               id={pokemon.id}
               name={pokemon.name}
@@ -54,6 +57,8 @@ export const SelectItems:React.FC<{
               deepState={deepState}
               favor={pokemon.favor}
               setShowHeartDescr  = {setShowHeartDescr}
+              setMobile = {setMobile}
+           
             />
             ))
             } else { return <div> У вас тут пусто :(</div>}
@@ -68,6 +73,8 @@ export const SelectItems:React.FC<{
               deepState={deepState}
               favor={pokemon.favor}
               setShowHeartDescr  = {setShowHeartDescr }
+              setMobile = {setMobile}
+             
             />
           ))
         }
@@ -76,7 +83,7 @@ export const SelectItems:React.FC<{
 
 
   return (
-    <div className="selectItems">
+    <div className={mobile? "selectItems mobile" : "selectItems"} >
       <div className="search-wrapper">
         <label htmlFor="search-form">
           <input

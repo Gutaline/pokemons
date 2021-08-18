@@ -5,6 +5,7 @@ import {IPoki} from "../../interface";
 
 
 
+
 export const App:React.FC = () => {
 
   const [allPokemons, setAllPokemons] = useState<IPoki[]>([]);
@@ -32,8 +33,9 @@ export const App:React.FC = () => {
         setAllPokemons(currenList => [...currenList, data]);
       });
     }
-
+    
     createPokemonObject(data.results);
+    
   };
 
  
@@ -61,12 +63,14 @@ export const App:React.FC = () => {
       });
     }
   }
-
+ 
   checkFavorPoki();
+ 
 
   return (
     <div className="App">
       <Container pokemonsList={allPokemons} />
+      
     </div>
   );
 }

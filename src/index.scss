@@ -3,6 +3,10 @@
   font-family: 'Roboto', sans-serif;
 }
 
+li {
+  text-transform: capitalize;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -66,7 +70,7 @@ h1 {
   width: 100%;
   padding: 10px 5px;
   border-bottom: 1px solid black;
-  //background-color: rgba(24, 31, 36, 1);
+  background-color: rgba(24, 31, 36, 1);
   position: relative;
 }
 
@@ -122,6 +126,16 @@ h1 {
 
 .view {
   &-description {
+    &__back {
+      text-align: left;
+      margin-left: 20px;
+      display: none;
+      & span {
+        border: 2px solid pink;
+        padding: 10px;
+        border-radius: 15px;
+      }
+    }
     &__heart {
       text-align: end;
       margin-top: 20px;
@@ -167,6 +181,9 @@ h1 {
     &__abilityDescr {
       margin-left: 15px;
       margin-top: 16px;
+    }
+    &__mobile {
+      height: 100%;
     }
   }
 }
