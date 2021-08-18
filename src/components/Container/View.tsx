@@ -1,6 +1,7 @@
 import React from 'react'
 import PokemonDescription from './PokemonDescription'
 
+
 import {IPoki} from "../../interface";
 
 export const View: React.FC<{
@@ -14,12 +15,13 @@ export const View: React.FC<{
 
 }> =({myState,pokiDescription,favorites,showHeartDescr,setShowHeartDescr,mobile,setMobile}) => {
 
- 
+
   return (
+
     <div  className = "view" >
      { myState &&
-        <PokemonDescription  
-        favorites = {favorites}  
+        <PokemonDescription
+        favorites = {favorites}
         allDescr = {pokiDescription}
         ability = {pokiDescription.abilities[0].ability.name}
         abilityDescr = {pokiDescription.abildesr[1].effect}
@@ -32,7 +34,7 @@ export const View: React.FC<{
         mobile = {mobile}
         setMobile = {setMobile}
         />
-     } 
+      }
     </div>
   )
 

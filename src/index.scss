@@ -3,6 +3,10 @@
   font-family: 'Roboto', sans-serif;
 }
 
+li {
+  text-transform: capitalize;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -15,8 +19,12 @@ h1 {
   margin: 0;
 }
 
+.App {
+  height: 100%;
+}
+
 .container {
-  max-width: 1110px;
+  max-width: 100%;
   margin: 0px auto 0 auto;
   border: 1px solid black;
   background-color: #f9e641;
@@ -69,15 +77,10 @@ h1 {
 .categories {
   border-right: 1px solid grey;
   box-sizing: border-box;
-  padding: 10px 10px;
+  padding: 0.5% 0.5%;
   min-width: 200px;
   background-color: rgba(0, 0, 0, 0.73);
   color: #ffe600;
-  & h1 {
-    font-size: 23px;
-    display: inline-block;
-    margin-left: 6px;
-  }
   &-img {
     width: 30px;
     display: inline-block;
@@ -96,6 +99,7 @@ h1 {
 .selectItems {
   box-sizing: border-box;
   overflow: scroll;
+
   height: 700px;
   min-width: 180px;
   overflow-x: hidden;
@@ -179,6 +183,7 @@ h1 {
       margin-top: 16px;
     }
     &__mobile {
+      height: 100%;
     }
   }
 }
