@@ -1,8 +1,10 @@
 import React from 'react'
 import PokemonCart from './PokemonCart'
+import allPoki from '../../store/allPoki';
 
 import {IPoki,IPokiFavor} from "../../interface";
 
+import loader from "../../assets/loader.svg"
 
 export const SelectItems:React.FC<{
   pokemonsList:IPoki[]
@@ -98,7 +100,7 @@ export const SelectItems:React.FC<{
         </label>
       </div>
 
-      {renderFavorOrItems()}
+      { allPoki.count.length >= 19 ? renderFavorOrItems() : <div><img src={loader} alt="loading" /></div> }
     </div>
   )
 }

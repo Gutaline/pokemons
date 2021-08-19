@@ -1,49 +1,15 @@
-import React, {useEffect,useState} from 'react'
+import React, {useEffect} from 'react'
 import Container from '../Container/Container'
 
-import {IPoki} from "../../interface";
+import allPoki from '../../store/allPoki';
+import { observer } from 'mobx-react-lite';
 
 
 
-
-export const App:React.FC = () => {
-
-  const [allPokemons, setAllPokemons] = useState<IPoki[]>([]);
-  const [loadMore, setLoadMore] = useState('https://pokeapi.co/api/v2/pokemon?limit=20');
-
-  const getAllPokemons = async () => {
-    const res = await fetch(loadMore);
-    const data = await res.json();
-
-    setLoadMore(data.next);
-
-    async function createPokemonObject(results:IPoki[]) {
-      results.forEach(async pokemon => {
-        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`);
-        const data = await res.json();
-
-        const resAbility = await fetch(
-          `https://pokeapi.co/api/v2/ability/${data.abilities[0].ability.name}`,
-        );
-        const dataAbility = await resAbility.json();
-        const dataAbilityDescr = dataAbility.effect_entries;
-
-        data.abildesr = dataAbilityDescr;
-
-        setAllPokemons(currenList => [...currenList, data]);
-      });
-    }
-    
-    createPokemonObject(data.results);
-    
-  };
-
- 
-  allPokemons.sort((a, b) => a.id - b.id);
+export const App:React.FC = observer(() => {
 
   useEffect(() => {
-    getAllPokemons();
-
+    allPoki.getPoki();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -56,7 +22,7 @@ export const App:React.FC = () => {
         favorPoki[index] = item.id;
       });
 
-      allPokemons.forEach(item => {
+      allPoki.count.forEach(item => {
         if (favorPoki.includes(item.id)) {
           item.favor = true;
         }
@@ -64,15 +30,14 @@ export const App:React.FC = () => {
     }
   }
  
-  checkFavorPoki();
+ checkFavorPoki();
  
-
   return (
     <div className="App">
-      <Container pokemonsList={allPokemons} />
       
+      <Container pokemonsList={allPoki.count} />
     </div>
   );
-}
+});
 
 export default App;
