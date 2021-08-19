@@ -36,6 +36,7 @@ export const App:React.FC = observer(() => {
     <div className="App">
       
       <Container pokemonsList={allPoki.count} />
+      
     </div>
   );
 });

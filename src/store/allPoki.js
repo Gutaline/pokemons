@@ -1,14 +1,16 @@
 import { makeAutoObservable, runInAction } from 'mobx';
 
 class allPoki {
+  api = 'https://pokeapi.co/api/v2/pokemon?limit=20';
   count = [];
   constructor() {
     makeAutoObservable(this);
   }
 
   async getPoki() {
-    const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20');
+    const res = await fetch(this.api);
     const data = await res.json();
+    this.api = data.next;
 
     function createPokemonObject(results) {
       results.forEach(async pokemon => {
