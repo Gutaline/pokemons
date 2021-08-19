@@ -100,7 +100,7 @@ export const SelectItems:React.FC<{
         </label>
       </div>
 
-      { allPoki.count.length >= 19 ? renderFavorOrItems() : <div><img src={loader} alt="loading" /></div>}
+      { allPoki.count.length >= 19 ? renderFavorOrItems() : <div><img src={loader} alt="loading" /></div> }
     </div>
   )
 }
