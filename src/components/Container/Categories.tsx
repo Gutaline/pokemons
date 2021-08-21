@@ -16,7 +16,7 @@ export const Categories: React.FC<{
   setFavoritesVisible,
   burger,
   itemClass,
-  itemAbility,
+  itemAbility
 }) => {
   const [visibleAbilites, setVisibleAbilites] = React.useState(false) // Эти стейты нужны ,Чтобы кнопки выдвигались
   const [visibleClass, setVisibleClass] = React.useState(false) // Эти стейты нужны ,Чтобы кнопки выдвигались
@@ -27,16 +27,15 @@ export const Categories: React.FC<{
         className="categories-favorites__wrapper"
         onClick={() => {
           setFavoritesVisible(true)
-        }}
-      >
+          setFilter('')
+        }}>
         <img className="categories-img" src={heart} alt="heart" />
         <div
           className="categories-favorites"
           onClick={() => {
             setBurger(false)
             setMobile(false)
-          }}
-        >
+          }}>
           Избранное
         </div>
       </div>
@@ -50,8 +49,7 @@ export const Categories: React.FC<{
             setFavoritesVisible(false)
             setBurger(false)
             setMobile(false)
-          }}
-        >
+          }}>
           Все покемоны
         </li>
         <li onClick={() => setVisibleAbilites(!visibleAbilites)}>
@@ -66,8 +64,7 @@ export const Categories: React.FC<{
                     setFavoritesVisible(false)
                     setBurger(false)
                     setMobile(false)
-                  }}
-                >
+                  }}>
                   {ability}
                 </li>
               ))}
@@ -86,8 +83,7 @@ export const Categories: React.FC<{
                     setFavoritesVisible(false)
                     setBurger(false)
                     setMobile(false)
-                  }}
-                >
+                  }}>
                   {ability}
                 </li>
               ))}

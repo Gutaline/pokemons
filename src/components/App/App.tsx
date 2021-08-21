@@ -1,44 +1,34 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import Container from '../Container/Container'
 
-import allPoki from '../../store/allPoki';
-import { observer } from 'mobx-react-lite';
+import allPoki from '../../store/allPoki'
+import {observer} from 'mobx-react-lite'
 
-
-
-export const App:React.FC = observer(() => {
-
-  useEffect(() => {
-    allPoki.getPoki();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+export const App: React.FC = observer(() => {
   function checkFavorPoki() {
-    const a = JSON.parse(localStorage.getItem('poki')!);
-    let favorPoki:number[] = [];
+    const a = JSON.parse(localStorage.getItem('poki')!)
+    let favorPoki: number[] = []
 
     if (a) {
-      a.forEach((item:any, index:number) => {
-        favorPoki[index] = item.id;
-      });
+      a.forEach((item: any, index: number) => {
+        favorPoki[index] = item.id
+      })
 
-      allPoki.count.forEach(item => {
+      allPoki.count.forEach((item) => {
         if (favorPoki.includes(item.id)) {
-          item.favor = true;
+          item.favor = true
         }
-      });
+      })
     }
   }
- 
- checkFavorPoki();
- 
+
+  checkFavorPoki()
+
   return (
     <div className="App">
-      
       <Container pokemonsList={allPoki.count} />
-      
     </div>
-  );
-});
+  )
+})
 
-export default App;
+export default App
