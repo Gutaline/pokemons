@@ -6,8 +6,8 @@ class allPoki {
     makeAutoObservable(this);
   }
 
-  async getPoki() {
-    const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20');
+  async getPoki(limit) {
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}`);
     const data = await res.json();
 
     function createPokemonObject(results) {
