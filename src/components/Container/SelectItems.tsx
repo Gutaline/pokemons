@@ -137,7 +137,11 @@ export const SelectItems: React.FC<{
           <img src={loader} alt="loading" />
         </div>
       )}
-      {filter === 'All' && <div ref={pageEnd}>Загрузка...</div>}
+      {filter === 'All' && (
+        <div className="test" ref={pageEnd}>
+          <span>Загрузка...</span>
+        </div>
+      )}
     </div>
   )
 }
