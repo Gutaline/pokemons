@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+
 }
 
 li {
@@ -131,6 +132,7 @@ h1 {
 
 .view {
   &-description {
+    height: 100%;
     &__back {
       text-align: left;
       margin-left: 20px;

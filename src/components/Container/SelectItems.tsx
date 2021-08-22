@@ -36,7 +36,7 @@ export const SelectItems: React.FC<{
         (entries) => {
           if (filter === 'All' && entries[0].isIntersecting) {
             allPoki.getPoki()
-            console.log(entries)
+            console.log('123')
           }
         },
         {threshold: 1}

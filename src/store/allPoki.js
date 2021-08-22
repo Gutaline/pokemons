@@ -7,6 +7,7 @@ class allPoki {
     makeAutoObservable(this);
   }
 
+
   async getPoki() {
     const res = await fetch(this.api);
     const data = await res.json();
