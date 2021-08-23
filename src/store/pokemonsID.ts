@@ -6,12 +6,11 @@ class pokemonsID {
   constructor() {
     makeAutoObservable(this, {
       idPoki: observable,
-      getIdPoki: action,
       setIdPoki: action
     })
   }
 
-  setIdPoki(value) {
+  setIdPoki(value: number) {
     this.idPoki = value
   }
 }

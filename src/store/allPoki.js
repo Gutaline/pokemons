@@ -1,8 +1,9 @@
 import {action, makeAutoObservable, observable, runInAction} from 'mobx'
+import {IPoki} from '../interface'
 
 class allPoki {
   api = 'https://pokeapi.co/api/v2/pokemon?limit=20'
-  count = []
+  count= []
   constructor() {
     makeAutoObservable(this, {
       count: observable,
@@ -11,7 +12,6 @@ class allPoki {
       trueFavor: action
     })
   }
-
 
   async getPoki() {
     const res = await fetch(this.api)
@@ -42,7 +42,7 @@ class allPoki {
 
     createPokemonObject.call(this, data.results)
   }
-  falseFavor(id) {
+  falseFavor(id){
     this.count[id - 1].favor = false
   }
 
