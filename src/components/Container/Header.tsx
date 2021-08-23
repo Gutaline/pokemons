@@ -12,7 +12,15 @@ export const Header: React.FC<{}> = observer(() => {
         <img src={ball} alt="ball" />
       </div>
       <div className="header-logo__pokeman">
-        <img src={logo} alt="pokemon" />
+        <img
+          src={logo}
+          alt="pokemon"
+          onClick={() => window.location.reload()}
+        />
+      </div>
+
+      <div className="burger-menu">
+        <span></span>
       </div>
 
       <div
