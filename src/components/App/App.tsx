@@ -1,4 +1,3 @@
-
 import React from 'react'
 import Container from '../Container/Container'
 
@@ -15,9 +14,9 @@ export const App: React.FC = observer(() => {
         favorPoki[index] = item.id
       })
 
-      allPoki.count.forEach((item) => {
+      allPoki.count.forEach((item, index) => {
         if (favorPoki.includes(item.id)) {
-          item.favor = true
+          allPoki.trueFavor(index + 1)
         }
       })
     }

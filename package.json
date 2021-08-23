@@ -16,7 +16,7 @@
     "react-intersection-observer": "^8.32.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2",
-    "zod": "^3.7.3"
+    "zod": "^3.8.1"
   },
   "scripts": {
     "predeploy": "npm run build",
