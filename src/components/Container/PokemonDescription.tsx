@@ -16,7 +16,6 @@ export const PokemonDescription: React.FC<{
   ability: string
   abilityDescr: string
   favorites: (param: any) => void
-
   allDescr: IPoki
 }> = observer(
   ({id, name, image, type, ability, abilityDescr, favorites, allDescr}) => {
