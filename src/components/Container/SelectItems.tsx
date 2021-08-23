@@ -5,26 +5,15 @@ import allPoki from '../../store/allPoki'
 import {IPoki, IPokiFavor} from '../../interface'
 
 import loader from '../../assets/loader.svg'
+import mobile from '../../store/mobile'
+import favorItems from '../../store/favorItems'
+import {observer} from 'mobx-react-lite'
 
 export const SelectItems: React.FC<{
   pokemonsList: IPoki[]
-  deepState: (param: number) => void
   filter: string
   favorites: IPokiFavor[]
-  favoritesVisible: boolean
-  setShowHeartDescr: (param: boolean) => void
-  setMobile: (param: boolean) => void
-  mobile: boolean
-}> = ({
-  pokemonsList,
-  deepState,
-  filter,
-  favorites,
-  favoritesVisible,
-  setShowHeartDescr,
-  setMobile,
-  mobile
-}) => {
+}> = observer(({pokemonsList, filter, favorites}) => {
   const [q, setQ] = React.useState('') // это для поискового запроса
   const [searchParam] = React.useState(['name']) // задача массива нужных нам данных в АПИ
 
@@ -36,7 +25,6 @@ export const SelectItems: React.FC<{
         (entries) => {
           if (filter === 'All' && entries[0].isIntersecting) {
             allPoki.getPoki()
-            console.log(entries)
           }
         },
         {threshold: 1}
@@ -75,7 +63,7 @@ export const SelectItems: React.FC<{
   }
 
   function renderFavorOrItems() {
-    if (favoritesVisible) {
+    if (favorItems.favorState) {
       if (favorites.length > 0) {
         return favorites.map((pokemon: IPokiFavor, index: number) => (
           <PokemonCart
@@ -84,10 +72,7 @@ export const SelectItems: React.FC<{
             image={pokemon.image}
             type={pokemon.type}
             key={index}
-            deepState={deepState}
             favor={pokemon.favor}
-            setShowHeartDescr={setShowHeartDescr}
-            setMobile={setMobile}
           />
         ))
       } else {
@@ -103,10 +88,7 @@ export const SelectItems: React.FC<{
               image={pokemon.sprites.other.dream_world.front_default}
               type={pokemon.types[0].type.name}
               key={index}
-              deepState={deepState}
               favor={pokemon.favor}
-              setShowHeartDescr={setShowHeartDescr}
-              setMobile={setMobile}
             />
           ))}
         </>
@@ -115,7 +97,7 @@ export const SelectItems: React.FC<{
   }
 
   return (
-    <div className={mobile ? 'selectItems mobile' : 'selectItems'}>
+    <div className={mobile.mobileState ? 'selectItems mobile' : 'selectItems'}>
       <div className="search-wrapper">
         <label htmlFor="search-form">
           <input
@@ -138,12 +120,12 @@ export const SelectItems: React.FC<{
         </div>
       )}
       {filter === 'All' && (
-        <div className="test" ref={pageEnd}>
+        <div className="download" ref={pageEnd}>
           <span>Загрузка...</span>
         </div>
       )}
     </div>
   )
-}
+})
 
 export default SelectItems

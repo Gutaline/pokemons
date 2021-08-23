@@ -1,39 +1,53 @@
-import { makeAutoObservable, runInAction } from 'mobx';
+import {action, makeAutoObservable, observable, runInAction} from 'mobx'
 
 class allPoki {
-  api = 'https://pokeapi.co/api/v2/pokemon?limit=20';
-  count = [];
+  api = 'https://pokeapi.co/api/v2/pokemon?limit=20'
+  count = []
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this, {
+      count: observable,
+      getPoki: action,
+      falseFavor: action,
+      trueFavor: action
+    })
   }
 
   async getPoki() {
-    const res = await fetch(this.api);
-    const data = await res.json();
-    this.api = data.next;
+    const res = await fetch(this.api)
+    const data = await res.json()
+    this.api = data.next
 
     function createPokemonObject(results) {
-      results.forEach(async pokemon => {
-        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`);
-        const data = await res.json();
+      results.forEach(async (pokemon) => {
+        const res = await fetch(
+          `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
+        )
+        const data = await res.json()
 
         const resAbility = await fetch(
-          `https://pokeapi.co/api/v2/ability/${data.abilities[0].ability.name}`,
-        );
-        const dataAbility = await resAbility.json();
-        const dataAbilityDescr = dataAbility.effect_entries;
+          `https://pokeapi.co/api/v2/ability/${data.abilities[0].ability.name}`
+        )
+        const dataAbility = await resAbility.json()
+        const dataAbilityDescr = dataAbility.effect_entries
 
-        data.abildesr = dataAbilityDescr;
+        data.abildesr = dataAbilityDescr
 
         runInAction(() => {
-          this.count = [...this.count, data];
-          this.count.sort((a, b) => a.id - b.id);
-        });
-      });
+          this.count = [...this.count, data]
+          this.count.sort((a, b) => a.id - b.id)
+        })
+      })
     }
 
-    createPokemonObject.call(this, data.results);
+    createPokemonObject.call(this, data.results)
+  }
+  falseFavor(id) {
+    this.count[id - 1].favor = false
+  }
+
+  trueFavor(id) {
+    this.count[id - 1].favor = true
   }
 }
 
-export default new allPoki();
+export default new allPoki()

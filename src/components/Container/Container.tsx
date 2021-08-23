@@ -1,38 +1,28 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import Header from './Header'
 import Categories from './Categories'
 import SelectItems from './SelectItems'
 import View from './View'
 import useLocalStorage from './useLocalStorage'
+import {IPoki} from '../../interface'
 
-
-import { IPoki } from '../../interface'
+import {observer} from 'mobx-react-lite'
+import pokemonsId from '../../store/pokemonsID'
+import allPoki from '../../store/allPoki'
 
 export const Container: React.FC<{
   pokemonsList: IPoki[]
-}> = ({ pokemonsList }) => {
-  const [myState, setMyState] = useState<any>()
+}> = observer(({pokemonsList}) => {
   const [filter, setFilter] = useState('All')
-
-  const [mobile, setMobile] = useState(false)
-
-  const [favoritesVisible, setFavoritesVisible] = useState(false)
 
   const [favorites, setFavorites] = useLocalStorage('poki', [])
 
-  const [showHeartDescr, setShowHeartDescr] = useState(true)
-  const [burger, setBurger] = useState(false)
-
   return (
     <div className="container">
-      <Header burger={burger} setBurger={setBurger} />
+      <Header />
       <div className="wrapper">
         <Categories
           setFilter={setFilter}
-          setFavoritesVisible={setFavoritesVisible}
-          burger={burger}
-          setBurger={setBurger}
-          setMobile={setMobile}
           itemClass={['grass', 'normal', 'fire', 'water', 'bug']}
           itemAbility={[
             'overgroth',
@@ -43,31 +33,21 @@ export const Container: React.FC<{
             'swarm',
             'keen-eye',
             'run-away',
-            'torrent',
+            'torrent'
           ]}
         />
         <SelectItems
           pokemonsList={pokemonsList}
-          deepState={setMyState}
           filter={filter}
           favorites={favorites}
-          favoritesVisible={favoritesVisible}
-          setShowHeartDescr={setShowHeartDescr}
-          setMobile={setMobile}
-          mobile={mobile}
-          />
+        />
         <View
-          myState={myState}
-          pokiDescription={pokemonsList[myState - 1]}
+          pokiDescription={allPoki.count[pokemonsId.idPoki - 1]}
           favorites={setFavorites}
-          showHeartDescr={showHeartDescr}
-          setShowHeartDescr={setShowHeartDescr}
-          mobile={mobile}
-          setMobile={setMobile}
         />
       </div>
     </div>
   )
-}
+})
 
 export default Container
