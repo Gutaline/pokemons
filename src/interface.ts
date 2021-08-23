@@ -1,8 +1,7 @@
 import {z} from 'zod'
 
-const MySchema =z.object({
-    abildesr: z
-     .array(z.object({
+const MySchemaForPoki =z.object({
+    abildesr: z.array(z.object({
          effect: z.string(),
      })),
     abilities: z
@@ -38,7 +37,7 @@ const MySchema =z.object({
     favor: z.boolean()
 })
 
-export type IPoki = z.infer<typeof MySchema>
+export type IPoki = z.infer<typeof MySchemaForPoki>
 
 // export interface IPoki {
 //   abildesr: [{effect: string}, {effect: string}]
