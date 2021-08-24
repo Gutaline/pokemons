@@ -1,7 +1,7 @@
 import React from 'react'
 import heart from '../../assets/Heart1.png'
 
-import {IPoki} from '../../interface'
+import {IPoki, IPokiFavor} from '../../interface'
 
 import mobile from '../../store/mobile'
 import showHeart from '../../store/showHeart'
@@ -16,7 +16,7 @@ export const PokemonDescription: React.FC<{
   ability: string
   abilityDescr: string
   favorites: (param: any) => void
-  allDescr: IPoki
+  allDescr: IPoki | IPokiFavor
 }> = observer(
   ({id, name, image, type, ability, abilityDescr, favorites, allDescr}) => {
     function addOrDeleteFavor(params: boolean) {
@@ -39,7 +39,7 @@ export const PokemonDescription: React.FC<{
       } else {
         const todos = JSON.parse(localStorage.getItem('poki')!)
 
-        todos.forEach((item: IPoki, index: number) => {
+        todos.forEach((item: IPoki | IPokiFavor, index: number) => {
           if (item.id === id) {
             todos.splice(index, 1)
           }

@@ -6,6 +6,7 @@ import View from './View'
 import useLocalStorage from './useLocalStorage'
 import {IPoki} from '../../interface'
 
+import load from '../../store/loadDescription'
 import {observer} from 'mobx-react-lite'
 import pokemonsId from '../../store/pokemonsID'
 import allPoki from '../../store/allPoki'
@@ -41,10 +42,7 @@ export const Container: React.FC<{
           filter={filter}
           favorites={favorites}
         />
-        <View
-          pokiDescription={allPoki.count[pokemonsId.idPoki - 1]}
-          favorites={setFavorites}
-        />
+        <View pokiDescription={load.loading} favorites={setFavorites} />
       </div>
     </div>
   )
