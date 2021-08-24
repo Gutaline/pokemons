@@ -8,22 +8,22 @@ import loader from '../../assets/loader.svg'
 import mobile from '../../store/mobile'
 import favorItems from '../../store/favorItems'
 import {observer} from 'mobx-react-lite'
+import pokemonsFilter from '../../store/pokemonsFilter'
+import pokemonFavorites from '../../store/pokemonFavorites'
 
 export const SelectItems: React.FC<{
   pokemonsList: IPoki[]
-  filter: string
-  favorites: IPokiFavor[]
-}> = observer(({pokemonsList, filter, favorites}) => {
+}> = observer(({pokemonsList}) => {
   const [q, setQ] = React.useState('') // это для поискового запроса
   const [searchParam] = React.useState(['name']) // задача массива нужных нам данных в АПИ
 
   const pageEnd = React.useRef<any>()
 
   React.useEffect(() => {
-    if (filter === 'All') {
+    if (pokemonsFilter.filter === 'All') {
       const observer = new IntersectionObserver(
         (entries) => {
-          if (filter === 'All' && entries[0].isIntersecting) {
+          if (pokemonsFilter.filter === 'All' && entries[0].isIntersecting) {
             allPoki.getPoki()
           }
         },
@@ -32,14 +32,14 @@ export const SelectItems: React.FC<{
 
       observer.observe(pageEnd.current)
     }
-  }, [filter])
+  }, [pokemonsFilter.filter])
 
   function search(pokemonsList: IPoki[]) {
     // eslint-disable-next-line
     return pokemonsList.filter((pokemonsList: any) => {
       if (
-        pokemonsList.types[0].type.name === filter ||
-        pokemonsList.abilities[0].ability.name === filter
+        pokemonsList.types[0].type.name === pokemonsFilter.filter ||
+        pokemonsList.abilities[0].ability.name === pokemonsFilter.filter
       ) {
         return searchParam.some((newItem) => {
           return (
@@ -49,7 +49,7 @@ export const SelectItems: React.FC<{
               .indexOf(q.toLowerCase()) > -1
           )
         })
-      } else if (filter === 'All') {
+      } else if (pokemonsFilter.filter === 'All') {
         return searchParam.some((newItem) => {
           return (
             pokemonsList[newItem]
@@ -64,8 +64,8 @@ export const SelectItems: React.FC<{
 
   function renderFavorOrItems() {
     if (favorItems.favorState) {
-      if (favorites.length > 0) {
-        return favorites.map((pokemon: IPokiFavor, index: number) => (
+      if (pokemonFavorites.favorites.length > 0) {
+        return pokemonFavorites.favorites.map((pokemon: IPokiFavor, index: number) => (
           <PokemonCart
             id={pokemon.id}
             name={pokemon.name}
@@ -119,7 +119,7 @@ export const SelectItems: React.FC<{
           <img src={loader} alt="loading" />
         </div>
       )}
-      {filter === 'All' && (
+      {pokemonsFilter.filter === 'All' && (
         <div className="download" ref={pageEnd}>
           <span>Загрузка...</span>
         </div>

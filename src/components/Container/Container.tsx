@@ -13,8 +13,6 @@ import allPoki from '../../store/allPoki'
 export const Container: React.FC<{
   pokemonsList: IPoki[]
 }> = observer(({pokemonsList}) => {
-  const [filter, setFilter] = useState('All')
-
   const [favorites, setFavorites] = useLocalStorage('poki', [])
 
   return (
@@ -22,7 +20,6 @@ export const Container: React.FC<{
       <Header />
       <div className="wrapper">
         <Categories
-          setFilter={setFilter}
           itemClass={['grass', 'normal', 'fire', 'water', 'bug']}
           itemAbility={[
             'overgroth',
@@ -36,15 +33,8 @@ export const Container: React.FC<{
             'torrent'
           ]}
         />
-        <SelectItems
-          pokemonsList={pokemonsList}
-          filter={filter}
-          favorites={favorites}
-        />
-        <View
-          pokiDescription={allPoki.count[pokemonsId.idPoki - 1]}
-          favorites={setFavorites}
-        />
+        <SelectItems pokemonsList={pokemonsList} />
+        <View pokiDescription={allPoki.count[pokemonsId.idPoki - 1]} />
       </div>
     </div>
   )

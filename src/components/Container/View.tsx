@@ -5,15 +5,13 @@ import {IPoki} from '../../interface'
 import {observer} from 'mobx-react-lite'
 export const View: React.FC<{
   pokiDescription: IPoki
-  favorites: () => void
-}> = observer(({pokiDescription, favorites}) => {
+}> = observer(({pokiDescription}) => {
   function renderDescription() {}
 
   return (
     <div className="view">
       {pokemonsId.idPoki && (
         <PokemonDescription
-          favorites={favorites}
           allDescr={pokiDescription}
           ability={pokiDescription.abilities[0].ability.name}
           abilityDescr={pokiDescription.abildesr[1].effect}
