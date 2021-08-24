@@ -1,13 +1,12 @@
 import React from 'react'
 import heart from '../../assets/Heart1.png'
 
-import {IPoki} from '../../interface'
+import {IPoki, IPokiFavor} from '../../interface'
 
 import mobile from '../../store/mobile'
 import showHeart from '../../store/showHeart'
 import allPoki from '../../store/allPoki'
 import {observer} from 'mobx-react-lite'
-import pokemonFavorites from '../../store/pokemonFavorites'
 
 export const PokemonDescription: React.FC<{
   id: number
@@ -16,34 +15,37 @@ export const PokemonDescription: React.FC<{
   type: string
   ability: string
   abilityDescr: string
-  allDescr: IPoki
-}> = observer(({id, name, image, type, ability, abilityDescr, allDescr}) => {
-  function addOrDeleteFavor(params: boolean) {
-    if (params) {
-      pokemonFavorites.setFavorites((currentList: [{}]) => [
-        ...currentList,
-        {
-          id: id,
-          name: name,
-          image: image,
-          type: type,
-          favor: true,
-          ability: ability,
-          abilityDescr: abilityDescr
-        }
-      ])
-      showHeart.heartDisable()
+  favorites: (param: any) => void
+  allDescr: IPoki | IPokiFavor
+}> = observer(
+  ({id, name, image, type, ability, abilityDescr, favorites, allDescr}) => {
+    function addOrDeleteFavor(params: boolean) {
+      if (params) {
+        favorites((currentList: [{}]) => [
+          ...currentList,
+          {
+            id: id,
+            name: name,
+            image: image,
+            type: type,
+            favor: true,
+            ability: ability,
+            abilityDescr: abilityDescr
+          }
+        ])
+        showHeart.heartDisable()
 
       //setShowHeartDescr(!params)
     } else {
       const todos = JSON.parse(localStorage.getItem('poki')!)
 
-      todos.forEach((item: IPoki, index: number) => {
-        if (item.id === id) {
-          todos.splice(index, 1)
-        }
-      })
-      pokemonFavorites.setFavorites(todos)
+
+        todos.forEach((item: IPoki | IPokiFavor, index: number) => {
+          if (item.id === id) {
+            todos.splice(index, 1)
+          }
+        })
+        favorites(todos)
 
       showHeart.heartActive()
       //setShowHeartDescr(!params)

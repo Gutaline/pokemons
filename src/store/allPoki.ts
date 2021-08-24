@@ -4,6 +4,7 @@ import {IPoki} from '../interface'
 class allPoki {
   api = 'https://pokeapi.co/api/v2/pokemon?limit=20'
   count: IPoki[] = []
+
   constructor() {
     makeAutoObservable(this, {
       count: observable,
@@ -18,11 +19,11 @@ class allPoki {
     const data = await res.json()
     this.api = data.next
     this.createPokemonObject([])
-
     this.createPokemonObject.call(this, data.results)
   }
 
   createPokemonObject(results: IPoki[]) {
+
     results.forEach(async (pokemon) => {
       const res = await fetch(
         `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
@@ -40,16 +41,18 @@ class allPoki {
       runInAction(() => {
         this.count = [...this.count, data]
         this.count.sort((a: IPoki, b: IPoki) => a.id - b.id)
+
       })
     })
   }
 
-  falseFavor(id: number): void {
+  falseFavor(id: number) {
     this.count[id - 1].favor = false
   }
 
   trueFavor(id: number) {
     this.count[id - 1].favor = true
+
   }
 }
 

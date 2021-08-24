@@ -13,8 +13,6 @@ export const Categories: React.FC<{
   itemAbility: string[]
 }> = observer(
   ({
-
-
     itemClass,
     itemAbility
   }) => {

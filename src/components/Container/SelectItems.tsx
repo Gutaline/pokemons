@@ -9,11 +9,11 @@ import mobile from '../../store/mobile'
 import favorItems from '../../store/favorItems'
 import {observer} from 'mobx-react-lite'
 import pokemonsFilter from '../../store/pokemonsFilter'
-import pokemonFavorites from '../../store/pokemonFavorites'
 
 export const SelectItems: React.FC<{
   pokemonsList: IPoki[]
-}> = observer(({pokemonsList}) => {
+  favorites: IPokiFavor[]
+}> = observer(({pokemonsList, favorites}) => {
   const [q, setQ] = React.useState('') // это для поискового запроса
   const [searchParam] = React.useState(['name']) // задача массива нужных нам данных в АПИ
 
@@ -31,7 +31,7 @@ export const SelectItems: React.FC<{
       )
 
       observer.observe(pageEnd.current)
-    }
+    } // eslint-disable-next-line
   }, [pokemonsFilter.filter])
 
   function search(pokemonsList: IPoki[]) {
@@ -64,8 +64,8 @@ export const SelectItems: React.FC<{
 
   function renderFavorOrItems() {
     if (favorItems.favorState) {
-      if (pokemonFavorites.favorites.length > 0) {
-        return pokemonFavorites.favorites.map((pokemon: IPokiFavor, index: number) => (
+      if (favorites.length > 0) {
+        return favorites.map((pokemon: IPokiFavor, index: number) => (
           <PokemonCart
             id={pokemon.id}
             name={pokemon.name}

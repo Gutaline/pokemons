@@ -3,6 +3,7 @@ import heart from '../../assets/Heart1.png'
 import pokemonsId from '../../store/pokemonsID'
 import mobile from '../../store/mobile'
 import showHeart from '../../store/showHeart'
+import load from '../../store/loadDescription'
 import {observer} from 'mobx-react-lite'
 export const PokemonCart: React.FC<{
   id: number
@@ -16,8 +17,9 @@ export const PokemonCart: React.FC<{
     className="pokemon-cart"
     onClick={() => {
       // deepState(id);
-      pokemonsId.setIdPoki(id)
+      pokemonsId.setIdPoki(id, favor)
       mobile.activeMobile()
+      load.checkLocal()
       if (favor) {
         showHeart.heartDisable()
         //setShowHeartDescr(false)
