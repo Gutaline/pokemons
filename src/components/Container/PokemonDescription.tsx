@@ -80,7 +80,7 @@ export const PokemonDescription: React.FC<{
                 src={heart}
                 alt="heart"
                 onClick={() => {
-                  //allDescr.favor = true
+                  allDescr.favor = !allDescr.favor
                   allPoki.trueFavor(id)
                 }}
               />
