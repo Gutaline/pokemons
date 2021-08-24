@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Header from './Header'
 import Categories from './Categories'
 import SelectItems from './SelectItems'
@@ -12,7 +12,6 @@ import {observer} from 'mobx-react-lite'
 export const Container: React.FC<{
   pokemonsList: IPoki[]
 }> = observer(({pokemonsList}) => {
-  const [filter, setFilter] = useState('All')
 
   const [favorites, setFavorites] = useLocalStorage('poki', [])
 
@@ -21,7 +20,6 @@ export const Container: React.FC<{
       <Header />
       <div className="wrapper">
         <Categories
-          setFilter={setFilter}
           itemClass={['grass', 'normal', 'fire', 'water', 'bug']}
           itemAbility={[
             'overgroth',
@@ -35,11 +33,8 @@ export const Container: React.FC<{
             'torrent'
           ]}
         />
-        <SelectItems
-          pokemonsList={pokemonsList}
-          filter={filter}
-          favorites={favorites}
-        />
+
+        <SelectItems pokemonsList={pokemonsList} favorites={favorites} />
         <View pokiDescription={load.loading} favorites={setFavorites} />
       </div>
     </div>

@@ -5,16 +5,14 @@ import {observer} from 'mobx-react-lite'
 import burger from '../../store/burger'
 import mobile from '../../store/mobile'
 import favorItems from '../../store/favorItems'
+import pokemonsFilter from '../../store/pokemonsFilter'
 
 export const Categories: React.FC<{
-  setFilter: (param: string) => void
 
   itemClass: string[]
   itemAbility: string[]
 }> = observer(
   ({
-    setFilter,
-
     itemClass,
     itemAbility
   }) => {
@@ -28,7 +26,7 @@ export const Categories: React.FC<{
           onClick={() => {
             favorItems.favorActive()
             //setFavoritesVisible(true)
-            setFilter('')
+            pokemonsFilter.setFilter('')
           }}>
           <img className="categories-img" src={heart} alt="heart" />
           <div
@@ -46,7 +44,7 @@ export const Categories: React.FC<{
         <ul className="categoriesList">
           <li
             onClick={() => {
-              setFilter('All')
+              pokemonsFilter.setFilter('All')
               favorItems.favorDisable()
               //setFavoritesVisible(false)
               burger.burgerState = false
@@ -62,7 +60,7 @@ export const Categories: React.FC<{
                   <li
                     key={`${ability}_${index}`}
                     onClick={() => {
-                      setFilter(`${ability}`)
+                      pokemonsFilter.setFilter(`${ability}`)
                       favorItems.favorDisable()
                       //setFavoritesVisible(false)
                       burger.burgerState = false
@@ -82,7 +80,7 @@ export const Categories: React.FC<{
                   <li
                     key={`${ability}_${index}`}
                     onClick={() => {
-                      setFilter(`${ability}`)
+                      pokemonsFilter.setFilter(`${ability}`)
                       favorItems.favorDisable()
                       //setFavoritesVisible(false)
                       burger.burgerState = false

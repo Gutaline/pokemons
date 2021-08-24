@@ -1,11 +1,10 @@
 import {action, makeAutoObservable, observable, runInAction} from 'mobx'
-import {boolean, never} from 'zod'
-
 import {IPoki} from '../interface'
+
 class allPoki {
   api = 'https://pokeapi.co/api/v2/pokemon?limit=20'
-  myData:any = null
-  count:IPoki[] = []
+  count: IPoki[] = []
+
   constructor() {
     makeAutoObservable(this, {
       count: observable,
@@ -18,13 +17,13 @@ class allPoki {
   async getPoki() {
     const res = await fetch(this.api)
     const data = await res.json()
-
     this.api = data.next
-    this.myData = data.results
-    this.createPokemonObject(this.myData)
+    this.createPokemonObject([])
+    this.createPokemonObject.call(this, data.results)
   }
 
-  async createPokemonObject(results:IPoki[]) {
+  createPokemonObject(results: IPoki[]) {
+
     results.forEach(async (pokemon) => {
       const res = await fetch(
         `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
@@ -41,23 +40,19 @@ class allPoki {
 
       runInAction(() => {
         this.count = [...this.count, data]
-        this.count.sort((a, b) => a.id - b.id)
+        this.count.sort((a: IPoki, b: IPoki) => a.id - b.id)
+
       })
     })
   }
 
-  falseFavor(id:number) {
-    if( id < this.count.length) {
+  falseFavor(id: number) {
     this.count[id - 1].favor = false
-  
-     }
   }
 
-  trueFavor(id:number) {
-    if( id < this.count.length) {
-     
-      this.count[id - 1].favor = true
-    }
+  trueFavor(id: number) {
+    this.count[id - 1].favor = true
+
   }
 }
 

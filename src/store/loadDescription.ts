@@ -9,7 +9,7 @@ class loadDescription {
 
   constructor() {
     makeAutoObservable(this, {
-      mobileState: observable,
+      mobileState: observable,  
       loading: observable,
       checkLocal: action
     })
@@ -28,9 +28,9 @@ class loadDescription {
       this.mobileState = allPoki.count[pokemonsID.idPoki - 1]
       this.loading = 2
     }
-    
+
   }
- 
+
 }
 
 export default new loadDescription()
