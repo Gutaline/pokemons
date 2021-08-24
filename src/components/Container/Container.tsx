@@ -8,8 +8,6 @@ import {IPoki} from '../../interface'
 
 import load from '../../store/loadDescription'
 import {observer} from 'mobx-react-lite'
-import pokemonsId from '../../store/pokemonsID'
-import allPoki from '../../store/allPoki'
 
 export const Container: React.FC<{
   pokemonsList: IPoki[]

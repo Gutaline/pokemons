@@ -1,6 +1,5 @@
 import {action, makeAutoObservable, observable} from 'mobx'
 import pokemonsID from './pokemonsID'
-import {IPoki,IPokiFavor} from '../interface'
 import allPoki from '../store/allPoki'
 
 class loadDescription {

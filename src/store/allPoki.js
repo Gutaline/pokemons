@@ -1,9 +1,8 @@
 import {action, makeAutoObservable, observable, runInAction} from 'mobx'
-import {IPoki} from '../interface'
 
 class allPoki {
   api = 'https://pokeapi.co/api/v2/pokemon?limit=20'
-  count= []
+  count = []
   constructor() {
     makeAutoObservable(this, {
       count: observable,
@@ -42,12 +41,16 @@ class allPoki {
 
     createPokemonObject.call(this, data.results)
   }
-  falseFavor(id){
-    this.count[id - 1].favor = false
+  falseFavor(id) {
+    if (id <= this.count.length) {
+      this.count[id - 1].favor = false
+    }
   }
 
   trueFavor(id) {
-    this.count[id - 1].favor = true
+    if (id <= this.count.length) {
+      this.count[id - 1].favor = true
+    }
   }
 }
 

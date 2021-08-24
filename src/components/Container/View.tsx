@@ -1,10 +1,10 @@
 import React from 'react'
 import PokemonDescription from './PokemonDescription'
-import pokemonsId from '../../store/pokemonsID'
+
 import loadDescription from '../../store/loadDescription'
-import {IPoki} from '../../interface'
+
 import {observer} from 'mobx-react-lite'
-import {number} from 'zod'
+
 export const View: React.FC<{
   pokiDescription: number
   favorites: () => void
