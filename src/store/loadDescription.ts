@@ -4,12 +4,12 @@ import allPoki from '../store/allPoki'
 
 class loadDescription {
   loading:number = 0;
-  mobileState:any = allPoki.count[1];
+  mobileState:any = allPoki.count[0];
   favorOrNot:boolean = false
 
   constructor() {
     makeAutoObservable(this, {
-      mobileState: observable,  
+      mobileState: observable,
       loading: observable,
       checkLocal: action
     })
@@ -34,5 +34,3 @@ class loadDescription {
 }
 
 export default new loadDescription()
-
-//
