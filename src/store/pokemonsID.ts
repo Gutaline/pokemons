@@ -11,7 +11,11 @@ class pokemonsID {
     })
   }
 
+<<<<<<< HEAD:src/store/pokemonsID.ts
   setIdPoki(value:number,param:boolean) {
+=======
+  setIdPoki(value: number) {
+>>>>>>> 00fa0b068739d542b1771a212509fca10d9a8ae7:src/store/pokemonsID.js
     this.idPoki = value
     this.pokifavor = param;
   }
