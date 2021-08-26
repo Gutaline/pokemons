@@ -18,8 +18,8 @@ and then
 
 ## Scripts used
 
-1. React, TypeScript - for 
-2. Sass - for 
-3. MobX - for 
-4. [Zod](https://github.com/colinhacks/zod) - for
+1. [React](https://github.com/facebook/react), [TypeScript](https://github.com/microsoft/TypeScript) - for development
+2. [Sass](https://github.com/sass/sass) - for stylization
+3. [MobX](https://github.com/mobxjs/mobx) - for to simplify state management
+4. [Zod](https://github.com/colinhacks/zod) - for TypeScript validation
 
