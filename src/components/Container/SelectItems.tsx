@@ -41,23 +41,23 @@ export const SelectItems: React.FC<{
 
   function search(pokemonsList: IPoki[]) {
     // eslint-disable-next-line
-    return pokemonsList.filter((pokemonsList: any) => {
+    return pokemonsList.filter((pokemonsList: IPoki) => {
       if (
         pokemonsList.types[0].type.name === pokemonsFilter.filter ||
         pokemonsList.abilities[0].ability.name === pokemonsFilter.filter
       ) {
-        return searchParam.some((newItem) => {
+        return searchParam.some(() => {
           return (
-            pokemonsList[newItem]
+            pokemonsList
               .toString()
               .toLowerCase()
               .indexOf(pokemonsFilter.inputValue.toLowerCase()) > -1
           )
         })
       } else if (pokemonsFilter.filter === 'All') {
-        return searchParam.some((newItem) => {
+        return searchParam.some(() => {
           return (
-            pokemonsList[newItem]
+            pokemonsList
               .toString()
               .toLowerCase()
               .indexOf(pokemonsFilter.inputValue.toLowerCase()) > -1

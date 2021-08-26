@@ -1,10 +1,12 @@
 import {action, makeAutoObservable, observable} from 'mobx'
 import pokemonsID from './pokemonsID'
 import allPoki from '../store/allPoki'
+import {IPokiFavor} from '../interface'
+
 
 class loadDescription {
   loading:number = 0;
-  mobileState:any = allPoki.pokemons[0];
+  mobileState:any = null;
   favorOrNot:boolean = false
 
   constructor() {
@@ -18,7 +20,7 @@ class loadDescription {
   checkLocal() {
 
     if(pokemonsID.pokifavor) {
-      const description = JSON.parse(localStorage.getItem('poki')!).filter((poki:any) => poki.id === pokemonsID.idPoki)
+      const description = JSON.parse(localStorage.getItem('poki')!).filter((poki:IPokiFavor) => poki.id === pokemonsID.idPoki)
       let a = description
       this.mobileState  = description
       console.log(a)
