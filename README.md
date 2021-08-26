@@ -23,3 +23,10 @@ and then
 3. [MobX](https://github.com/mobxjs/mobx) - for to simplify state management
 4. [Zod](https://github.com/colinhacks/zod) - for TypeScript validation
 
+## Functional
+
+1. Loading data from an open [Pokemon API](https://pokeapi.co/docs/v2) with infinite loading
+2. Sorting them by several indicators
+3. The ability to add / remove Pokemon to the favorites list, only the necessary information about the selected Pokemon will be stored in your local storage
+
+<img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@5.11.0/icons/pokemon.svg" />
