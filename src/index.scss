@@ -3,6 +3,13 @@
   font-family: 'Roboto', sans-serif;
 
 }
+.active {
+ display: block;
+}
+
+.disable {
+  display: none;
+}
 
 li {
   text-transform: capitalize;
@@ -131,6 +138,14 @@ h1 {
 }
 
 .view {
+  flex-grow: 2;
+  &-emptyDescr {
+    text-align: center;
+    & img {
+      max-width: 320px;
+    }
+  }
+
   &-description {
     height: 100%;
     &__back {
@@ -288,5 +303,7 @@ h1 {
   border-radius: 8px;
   border: 0px solid transparent;
 }
+
+
 
 @import './media';

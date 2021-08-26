@@ -1,7 +1,7 @@
 import {action, makeAutoObservable, observable} from 'mobx'
 
 class showHeart {
-  heart = true
+  heart = false
 
   constructor() {
     makeAutoObservable(this, {
