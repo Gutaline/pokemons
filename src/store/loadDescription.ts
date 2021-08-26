@@ -1,16 +1,16 @@
 import {action, makeAutoObservable, observable} from 'mobx'
 import pokemonsID from './pokemonsID'
 import allPoki from '../store/allPoki'
-import {IPokiFavor} from '../interface'
+import { IPokiFavor} from '../interface'
 
 class loadDescription {
   loading: number = 0
-  mobileState: any = allPoki.pokemons[0]
+  description: any = allPoki.pokemons[0]
   favorOrNot: boolean = false
 
   constructor() {
     makeAutoObservable(this, {
-      mobileState: observable,
+      description: observable,
       loading: observable,
       checkLocal: action
     })
@@ -22,11 +22,11 @@ class loadDescription {
         (poki: IPokiFavor) => poki.id === pokemonsID.idPoki
       )
       let a = description
-      this.mobileState = description
+      this.description = description
       console.log(a)
       this.loading = 1
     } else {
-      this.mobileState = allPoki.pokemons[pokemonsID.idPoki - 1]
+      this.description = allPoki.pokemons[pokemonsID.idPoki - 1]
       this.loading = 2
     }
   }

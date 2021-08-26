@@ -23,16 +23,16 @@ export const View: React.FC<{
         <>
           <PokemonDescription
             favorites={favorites}
-            allDescr={loadDescription.mobileState}
-            ability={loadDescription.mobileState.abilities[0].ability.name}
-            abilityDescr={loadDescription.mobileState.abildesr[1].effect}
-            id={loadDescription.mobileState.id}
-            name={loadDescription.mobileState.name}
+            allDescr={loadDescription.description}
+            ability={loadDescription.description.abilities[0].ability.name}
+            abilityDescr={loadDescription.description.abildesr[1].effect}
+            id={loadDescription.description.id}
+            name={loadDescription.description.name}
             image={
-              loadDescription.mobileState.sprites.other.dream_world
+              loadDescription.description.sprites.other.dream_world
                 .front_default
             }
-            type={loadDescription.mobileState.types[0].type.name}
+            type={loadDescription.description.types[0].type.name}
           />
         </>
       )
@@ -41,13 +41,13 @@ export const View: React.FC<{
         <>
           <PokemonDescription
             favorites={favorites}
-            allDescr={loadDescription.mobileState[0]}
-            ability={loadDescription.mobileState[0].ability}
-            abilityDescr={loadDescription.mobileState[0].abilityDescr}
-            id={loadDescription.mobileState[0].id}
-            name={loadDescription.mobileState[0].name}
-            image={loadDescription.mobileState[0].image}
-            type={loadDescription.mobileState[0].type}
+            allDescr={loadDescription.description[0]}
+            ability={loadDescription.description[0].ability}
+            abilityDescr={loadDescription.description[0].abilityDescr}
+            id={loadDescription.description[0].id}
+            name={loadDescription.description[0].name}
+            image={loadDescription.description[0].image}
+            type={loadDescription.description[0].type}
           />
         </>
       )

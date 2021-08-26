@@ -15,20 +15,7 @@ export const Container: React.FC<{}> = observer(() => {
     <div className="container">
       <Header />
       <div className="wrapper">
-        <Categories
-          itemClass={['grass', 'normal', 'fire', 'water', 'bug']}
-          itemAbility={[
-            'overgroth',
-            'blaze',
-            'shield-dust',
-            'shed-skin',
-            'compound-eyes',
-            'swarm',
-            'keen-eye',
-            'run-away',
-            'torrent'
-          ]}
-        />
+        <Categories />
 
         <SelectItems favorites={favorites} />
         <View pokiDescription={load.loading} favorites={setFavorites} />
