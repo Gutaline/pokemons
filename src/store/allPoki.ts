@@ -4,6 +4,8 @@ import {IPoki} from '../interface'
 class allPoki {
   api = 'https://pokeapi.co/api/v2/pokemon?limit=20'
   pokemons: IPoki[] = []
+  limit:number = 0;
+  loading = true;
 
   constructor() {
     makeAutoObservable(this, {
@@ -15,11 +17,16 @@ class allPoki {
   }
 
   async getPoki() {
+    if(this.api === null) {
+      this.loading = false
+    }
+    if(this.loading) {
     const res = await fetch(this.api)
     const data = await res.json()
     this.api = data.next
     this.createPokemonObject([])
     this.createPokemonObject.call(this, data.results)
+  }
   }
 
   createPokemonObject(results: IPoki[]) {
