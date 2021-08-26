@@ -12,6 +12,9 @@ class burger {
   setReverseState() {
     this.burgerState = !this.burgerState
   }
+  setBurgerFalse() {
+    this.burgerState = false
+  }
 }
 
 export default new burger()

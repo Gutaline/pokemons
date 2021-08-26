@@ -6,13 +6,10 @@ import burger from '../../store/burger'
 import mobile from '../../store/mobile'
 import favorItems from '../../store/favorItems'
 import pokemonsFilter from '../../store/pokemonsFilter'
+import visible from '../../store/visible'
+import searchItems from '../../store/searchItems'
 
-export const Categories: React.FC<{
-  itemClass: string[]
-  itemAbility: string[]
-}> = observer(({itemClass, itemAbility}) => {
-  const [visibleAbilites, setVisibleAbilites] = React.useState(false) // Эти стейты нужны ,Чтобы кнопки выдвигались
-  const [visibleClass, setVisibleClass] = React.useState(false) // Эти стейты нужны ,Чтобы кнопки выдвигались
+export const Categories: React.FC<{}> = observer(() => {
 
   return (
     <div className={burger.burgerState ? 'categories active' : 'categories'}>
@@ -27,38 +24,36 @@ export const Categories: React.FC<{
         <div
           className="categories-favorites"
           onClick={() => {
-            burger.burgerState = false
+            burger.setBurgerFalse()
             mobile.disableMobile()
           }}>
           Избранное
         </div>
       </div>
-
       <div className="title">Категории</div>
-
       <ul className="categoriesList">
         <li
           onClick={() => {
             pokemonsFilter.setFilter('All')
             favorItems.favorDisable()
             //setFavoritesVisible(false)
-            burger.burgerState = false
+            burger.setBurgerFalse()
             mobile.disableMobile()
           }}>
           Все покемоны
         </li>
-        <li onClick={() => setVisibleAbilites(!visibleAbilites)}>
+        <li onClick={() => visible.setVisibleAbilites()}>
           Классы
-          {visibleAbilites && (
+          {visible.Abilites && (
             <ul>
-              {itemClass.map((ability, index) => (
+              {searchItems.itemClass.map((ability, index) => (
                 <li
                   key={`${ability}_${index}`}
                   onClick={() => {
                     pokemonsFilter.setFilter(`${ability}`)
                     favorItems.favorDisable()
                     //setFavoritesVisible(false)
-                    burger.burgerState = false
+                    burger.setBurgerFalse()
                     mobile.disableMobile()
                   }}>
                   {ability}
@@ -67,18 +62,19 @@ export const Categories: React.FC<{
             </ul>
           )}
         </li>
-        <li onClick={() => setVisibleClass(!visibleClass)}>
+        <li onClick={() => visible.setVisibleClass()}>
           Cпособности
-          {visibleClass && (
+          {visible.Class && (
             <ul>
-              {itemAbility.map((ability, index) => (
+              {searchItems.itemAbility.map((ability, index) => (
                 <li
                   key={`${ability}_${index}`}
                   onClick={() => {
                     pokemonsFilter.setFilter(`${ability}`)
                     favorItems.favorDisable()
                     //setFavoritesVisible(false)
-                    burger.burgerState = false
+                    burger.setBurgerFalse()
+
                     mobile.disableMobile()
                   }}>
                   {ability}

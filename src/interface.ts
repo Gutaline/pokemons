@@ -77,10 +77,6 @@ const MySchemaForFavor = z.object({
 })
 
 export type IPokiFavor = z.infer<typeof MySchemaForFavor>
-//
-const NewIPoki = MySchemaForPoki.merge(MySchemaForFavor)
-export type NewIPoki = z.infer<typeof NewIPoki>
-//
 
 
 // export interface IPokiFavor {
