@@ -1,4 +1,4 @@
-# The pokenoms searcher app
+# Pokemon searcher app
 
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?color=FFCB05&lines=Pokemon+are+here+%5E%5E)](https://git.io/typing-svg)
 
