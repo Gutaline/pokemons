@@ -7,18 +7,17 @@ import loadDescription from '../../store/loadDescription'
 import {observer} from 'mobx-react-lite'
 
 export const View: React.FC<{
-  pokiDescription: number
   favorites: () => void
-}> = observer(({pokiDescription, favorites}) => {
+}> = observer(({favorites}) => {
   function renderDescription() {
-    if (pokiDescription === 0) {
+    if (loadDescription.loading === 0) {
       return (
         <div className="view-emptyDescr">
           <img src={emptyDescr} alt="Пустое описание" />
           <div>Нажмите на покемона в списке</div>
         </div>
       )
-    } else if (pokiDescription === 2) {
+    } else if (loadDescription.loading === 2) {
       return (
         <>
           <PokemonDescription

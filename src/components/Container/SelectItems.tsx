@@ -11,12 +11,11 @@ import {observer} from 'mobx-react-lite'
 import pokemonsFilter from '../../store/pokemonsFilter'
 
 export const SelectItems: React.FC<{
-  pokemonsList: IPoki[]
   favorites: IPokiFavor[]
-}> = observer(({pokemonsList, favorites}) => {
+}> = observer(({favorites}) => {
   const [searchParam] = React.useState(['name']) // задача массива нужных нам данных в АПИ
 
-  const pageEnd = React.useRef<any>()
+  const pageEnd = React.useRef<HTMLDivElement>(null)
 
   React.useEffect(() => {
     if (pokemonsFilter.filter === 'All') {
@@ -34,8 +33,9 @@ export const SelectItems: React.FC<{
         },
         {threshold: 1}
       )
-
-      observer.observe(pageEnd.current)
+      if (null !== pageEnd.current) {
+        observer.observe(pageEnd.current)
+      }
     } // eslint-disable-next-line
   }, [pokemonsFilter.filter])
 
@@ -86,7 +86,7 @@ export const SelectItems: React.FC<{
     } else {
       return (
         <>
-          {search(pokemonsList).map((pokemon: IPoki, index: number) => (
+          {search(allPoki.pokemons).map((pokemon: IPoki, index: number) => (
             <PokemonCart
               id={pokemon.id}
               name={pokemon.name}
@@ -119,7 +119,7 @@ export const SelectItems: React.FC<{
         </label>
       </div>
 
-      {allPoki.count.length >= 19 ? (
+      {allPoki.pokemons.length >= 19 ? (
         renderFavorOrItems()
       ) : (
         <div>

@@ -4,7 +4,7 @@ import allPoki from '../store/allPoki'
 
 class loadDescription {
   loading:number = 0;
-  mobileState:any = allPoki.count[0];
+  mobileState:any = allPoki.pokemons[0];
   favorOrNot:boolean = false
 
   constructor() {
@@ -25,7 +25,7 @@ class loadDescription {
       this.loading = 1
     }
     else {
-      this.mobileState = allPoki.count[pokemonsID.idPoki - 1]
+      this.mobileState = allPoki.pokemons[pokemonsID.idPoki - 1]
       this.loading = 2
     }
 
