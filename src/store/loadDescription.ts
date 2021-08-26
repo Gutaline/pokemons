@@ -5,7 +5,7 @@ import { IPokiFavor} from '../interface'
 
 class loadDescription {
   loading: number = 0
-  description: any = allPoki.pokemons[0]
+  description: any = null
   favorOrNot: boolean = false
 
   constructor() {
@@ -17,10 +17,8 @@ class loadDescription {
   }
 
   checkLocal() {
-    if (pokemonsID.pokifavor) {
-      const description = JSON.parse(localStorage.getItem('poki')!).filter(
-        (poki: IPokiFavor) => poki.id === pokemonsID.idPoki
-      )
+    if(pokemonsID.pokifavor) {
+      const description = JSON.parse(localStorage.getItem('poki')!).filter((poki:IPokiFavor) => poki.id === pokemonsID.idPoki)
       let a = description
       this.description = description
       console.log(a)

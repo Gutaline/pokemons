@@ -10,6 +10,7 @@ import visible from '../../store/visible'
 import searchItems from '../../store/searchItems'
 
 export const Categories: React.FC<{}> = observer(() => {
+
   return (
     <div className={burger.burgerState ? 'categories active' : 'categories'}>
       <div
@@ -29,9 +30,7 @@ export const Categories: React.FC<{}> = observer(() => {
           Избранное
         </div>
       </div>
-
       <div className="title">Категории</div>
-
       <ul className="categoriesList">
         <li
           onClick={() => {
@@ -75,6 +74,7 @@ export const Categories: React.FC<{}> = observer(() => {
                     favorItems.favorDisable()
                     //setFavoritesVisible(false)
                     burger.setBurgerFalse()
+
                     mobile.disableMobile()
                   }}>
                   {ability}

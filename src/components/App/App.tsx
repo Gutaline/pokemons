@@ -1,6 +1,6 @@
 import React from 'react'
 import Container from '../Container/Container'
-
+import {IPokiFavor} from '../../interface'
 import allPoki from '../../store/allPoki'
 import {observer} from 'mobx-react-lite'
 
@@ -10,7 +10,7 @@ export const App: React.FC = observer(() => {
     let favorPoki: number[] = []
 
     if (a) {
-      a.forEach((item: any, index: number) => {
+      a.forEach((item: IPokiFavor, index: number) => {
         favorPoki[index] = item.id
       })
 

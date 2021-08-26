@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import {IPokiFavor} from '../../interface'
 
 export const useLocalStorage = (
     key: string,
-    initialValue: any,
+    initialValue: IPokiFavor[],
  ) => {
 
   const [storedValue, setStoredValue] = useState(() => {
@@ -20,7 +21,7 @@ export const useLocalStorage = (
 
   // Return a wrapped version of useState's setter function that ...
   // ... persists the new value to localStorage.
-  const setValue = (value:any) => {
+  const setValue = (value:IPokiFavor) => {
     try {
       // Allow value to be a function so we have same API as useState
       const valueToStore = value instanceof Function ? value(storedValue) : value;

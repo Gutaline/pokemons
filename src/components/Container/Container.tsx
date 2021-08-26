@@ -5,7 +5,6 @@ import SelectItems from './SelectItems'
 import View from './View'
 import useLocalStorage from './useLocalStorage'
 
-import load from '../../store/loadDescription'
 import {observer} from 'mobx-react-lite'
 
 export const Container: React.FC<{}> = observer(() => {
@@ -16,9 +15,8 @@ export const Container: React.FC<{}> = observer(() => {
       <Header />
       <div className="wrapper">
         <Categories />
-
         <SelectItems favorites={favorites} />
-        <View pokiDescription={load.loading} favorites={setFavorites} />
+        <View favorites={setFavorites} />
       </div>
     </div>
   )
