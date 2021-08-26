@@ -16,5 +16,10 @@ and then
 
 ### `npm start`
 
+## Scripts used
 
+1. React, TypeScript - for 
+2. Sass - for 
+3. MobX - for 
+4. [Zod](https://github.com/colinhacks/zod) - for
 
