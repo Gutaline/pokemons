@@ -14,7 +14,6 @@ export const SelectItems: React.FC<{
   pokemonsList: IPoki[]
   favorites: IPokiFavor[]
 }> = observer(({pokemonsList, favorites}) => {
-  const [q, setQ] = React.useState('') // это для поискового запроса
   const [searchParam] = React.useState(['name']) // задача массива нужных нам данных в АПИ
 
   const pageEnd = React.useRef<any>()
@@ -23,7 +22,13 @@ export const SelectItems: React.FC<{
     if (pokemonsFilter.filter === 'All') {
       const observer = new IntersectionObserver(
         (entries) => {
-          if (pokemonsFilter.filter === 'All' && entries[0].isIntersecting) {
+          console.log(entries)
+
+          if (
+            pokemonsFilter.filter === 'All' &&
+            entries[0].isIntersecting &&
+            pokemonsFilter.inputValue === ''
+          ) {
             allPoki.getPoki()
           }
         },
@@ -46,7 +51,7 @@ export const SelectItems: React.FC<{
             pokemonsList[newItem]
               .toString()
               .toLowerCase()
-              .indexOf(q.toLowerCase()) > -1
+              .indexOf(pokemonsFilter.inputValue.toLowerCase()) > -1
           )
         })
       } else if (pokemonsFilter.filter === 'All') {
@@ -55,7 +60,7 @@ export const SelectItems: React.FC<{
             pokemonsList[newItem]
               .toString()
               .toLowerCase()
-              .indexOf(q.toLowerCase()) > -1
+              .indexOf(pokemonsFilter.inputValue.toLowerCase()) > -1
           )
         })
       }
@@ -106,8 +111,10 @@ export const SelectItems: React.FC<{
             id="search-form"
             className="search-input"
             placeholder="Search for..."
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
+            value={pokemonsFilter.inputValue}
+            onChange={(e) => {
+              pokemonsFilter.setInputValue(e.target.value)
+            }}
           />
         </label>
       </div>
@@ -121,7 +128,9 @@ export const SelectItems: React.FC<{
       )}
       {pokemonsFilter.filter === 'All' && (
         <div className="download" ref={pageEnd}>
-          <span>Загрузка...</span>
+          <span className={pokemonsFilter.inputValue ? 'disable' : 'active'}>
+            Загрузка...
+          </span>
         </div>
       )}
     </div>

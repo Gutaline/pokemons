@@ -1,18 +1,23 @@
 import React from 'react'
 import PokemonDescription from './PokemonDescription'
+import emptyDescr from '../../../src/assets/emptyDescr.png'
 
 import loadDescription from '../../store/loadDescription'
 
 import {observer} from 'mobx-react-lite'
 
 export const View: React.FC<{
-
   pokiDescription: number
   favorites: () => void
 }> = observer(({pokiDescription, favorites}) => {
   function renderDescription() {
     if (pokiDescription === 0) {
-      return <div>Нажмите на покемона</div>
+      return (
+        <div className="view-emptyDescr">
+          <img src={emptyDescr} alt="Пустое описание" />
+          <div>Нажмите на покемона в списке</div>
+        </div>
+      )
     } else if (pokiDescription === 2) {
       return (
         <>
