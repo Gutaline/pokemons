@@ -1,6 +1,6 @@
 # Pokemon searcher app
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?color=FFCB05&lines=Pokemon+are+here+%5E%5E)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com/?color=FFCB05&lines=Pokemon+are+here+%5E%5E)](https://git.io/typing-svg)
 
 Created by [Artur Azimov](https://github.com/Gutaline) and [Eugene Maximov](https://github.com/eugeneMaximovHub) as part of the internship.
 
@@ -10,13 +10,17 @@ For the start you can put on this [button](https://github.com/Gutaline/pokemons/
 
 or
 
-clone this rep and write in the console
+clone this rep and write in the console:
 
-### `npm i`
+### git clone https://github.com/Gutaline/pokemons.git
 
-and then
+download all the necessary packages:
 
-### `npm start`
+### npm i
+
+and then:
+
+### npm start
 
 ## Scripts used
 
