@@ -4,15 +4,11 @@ import Categories from './Categories'
 import SelectItems from './SelectItems'
 import View from './View'
 import useLocalStorage from './useLocalStorage'
-import {IPoki} from '../../interface'
 
 import load from '../../store/loadDescription'
 import {observer} from 'mobx-react-lite'
 
-export const Container: React.FC<{
-  pokemonsList: IPoki[]
-}> = observer(({pokemonsList}) => {
-
+export const Container: React.FC<{}> = observer(() => {
   const [favorites, setFavorites] = useLocalStorage('poki', [])
 
   return (
@@ -34,7 +30,7 @@ export const Container: React.FC<{
           ]}
         />
 
-        <SelectItems pokemonsList={pokemonsList} favorites={favorites} />
+        <SelectItems favorites={favorites} />
         <View pokiDescription={load.loading} favorites={setFavorites} />
       </div>
     </div>

@@ -14,7 +14,7 @@ export const App: React.FC = observer(() => {
         favorPoki[index] = item.id
       })
 
-      allPoki.count.forEach((item, index) => {
+      allPoki.pokemons.forEach((item, index) => {
         if (favorPoki.includes(item.id)) {
           allPoki.trueFavor(index + 1)
         }
@@ -26,7 +26,7 @@ export const App: React.FC = observer(() => {
 
   return (
     <div className="App">
-      <Container pokemonsList={allPoki.count} />
+      <Container />
     </div>
   )
 })

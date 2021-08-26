@@ -3,11 +3,11 @@ import {IPoki} from '../interface'
 
 class allPoki {
   api = 'https://pokeapi.co/api/v2/pokemon?limit=20'
-  count: IPoki[] = []
+  pokemons: IPoki[] = []
 
   constructor() {
     makeAutoObservable(this, {
-      count: observable,
+      pokemons: observable,
       getPoki: action,
       falseFavor: action,
       trueFavor: action
@@ -38,21 +38,21 @@ class allPoki {
       data.abildesr = dataAbilityDescr
 
       runInAction(() => {
-        this.count = [...this.count, data]
-        this.count.sort((a: IPoki, b: IPoki) => a.id - b.id)
+        this.pokemons = [...this.pokemons, data]
+        this.pokemons.sort((a: IPoki, b: IPoki) => a.id - b.id)
       })
     })
   }
 
   falseFavor(id: number) {
-    if (id < this.count.length) {
-      this.count[id - 1].favor = false
+    if (id < this.pokemons.length) {
+      this.pokemons[id - 1].favor = false
     }
   }
 
   trueFavor(id: number) {
-    if (id < this.count.length) {
-      this.count[id - 1].favor = true
+    if (id < this.pokemons.length) {
+      this.pokemons[id - 1].favor = true
     }
   }
 }
