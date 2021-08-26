@@ -29,4 +29,4 @@ and then
 2. Sorting them by several indicators
 3. The ability to add / remove Pokemon to the favorites list, only the necessary information about the selected Pokemon will be stored in your local storage
 
-<img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@5.11.0/icons/pokemon.svg" />
+<img height="50" width="150" src="https://cdn.jsdelivr.net/npm/simple-icons@5.11.0/icons/pokemon.svg"  style="background-color: #fff"/>
